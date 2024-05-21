@@ -1564,6 +1564,14 @@ skos:altLabel a owl:AnnotationProperty .
     rdfs:label "rating" ;
     rdfs:subPropertyOf :d3fend-catalog-data-property .
 
+:sparta-id a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "sparta-id" ;
+    rdfs:subPropertyOf :d3fend-kb-data-property ;
+    rdfs:domain :SPARTAThing ;
+    rdfs:range xsd:string ;
+    :definition "x sparta-id y: The SPARTA thing x is identified by string y." .
+
 :stage a owl:DatatypeProperty,
         owl:FunctionalProperty ;
     rdfs:label "stage" ;
@@ -17878,6 +17886,114 @@ The goal is for homophones to be encoded to the same representation so that they
     rdfs:subClassOf :TechniqueReference ;
     :pref-label "Source Code" .
 
+:SPARTACountermeasure a owl:Class ;
+    rdfs:label "SPARTA Countermeasure" ;
+    rdfs:subClassOf :SPARTAThing,
+        [ a owl:Restriction ;
+            owl:onProperty :may-be-associated-with ;
+            owl:someValuesFrom :DigitalArtifact ],
+        [ a owl:Restriction ;
+            owl:onProperty :semantic-relation ;
+            owl:someValuesFrom :DefensiveTechnique ],
+        [ a owl:Restriction ;
+            owl:onProperty :semantic-relation ;
+            owl:someValuesFrom :NISTControl ] ;
+    :definition "SPARTA Countermeasures represent security concepts and classes of technologies that can be used to prevent a technique from being successfully executed. Countermeasures are mapped to techniques in a one-to-many relationship, describing their deployment across the space segment, development environment, or ground segment." ;
+    rdfs:seeAlso <https://sparta.aerospace.org/countermeasures/SPARTA> .
+
+:SPARTADefenseEvasionTechnique a owl:Class ;
+    rdfs:label "Defense Evasion - SPARTA - Technique" ;
+    rdfs:subClassOf :OffensiveTechnique,
+        :SPARTATechnique,
+        [ a owl:Restriction ;
+            owl:onProperty :enables ;
+            owl:someValuesFrom :ST0006 ] .
+
+:SPARTAExecutionTechnique a owl:Class ;
+    rdfs:label "Execution - SPARTA - Technique" ;
+    rdfs:subClassOf :OffensiveTechnique,
+        :SPARTATechnique,
+        [ a owl:Restriction ;
+            owl:onProperty :enables ;
+            owl:someValuesFrom :ST0004 ] .
+
+:SPARTAExfiltrationTechnique a owl:Class ;
+    rdfs:label "Exfiltration - SPARTA - Technique" ;
+    rdfs:subClassOf :OffensiveTechnique,
+        :SPARTATechnique,
+        [ a owl:Restriction ;
+            owl:onProperty :enables ;
+            owl:someValuesFrom :ST0008 ] .
+
+:SPARTAImpactTechnique a owl:Class ;
+    rdfs:label "Impact - SPARTA - Technique" ;
+    rdfs:subClassOf :OffensiveTechnique,
+        :SPARTATechnique,
+        [ a owl:Restriction ;
+            owl:onProperty :enables ;
+            owl:someValuesFrom :ST0009 ] .
+
+:SPARTAInitialAccessTechnique a owl:Class ;
+    rdfs:label "Initial Access - SPARTA - Technique" ;
+    rdfs:subClassOf :OffensiveTechnique,
+        :SPARTATechnique,
+        [ a owl:Restriction ;
+            owl:onProperty :enables ;
+            owl:someValuesFrom :ST0003 ] .
+
+:SPARTALateralMovementTechnique a owl:Class ;
+    rdfs:label "Lateral Movement - SPARTA - Technique" ;
+    rdfs:subClassOf :OffensiveTechnique,
+        :SPARTATechnique,
+        [ a owl:Restriction ;
+            owl:onProperty :enables ;
+            owl:someValuesFrom :ST0007 ] .
+
+:SPARTAPersistenceTechnique a owl:Class ;
+    rdfs:label "Persistence - SPARTA - Technique" ;
+    rdfs:subClassOf :OffensiveTechnique,
+        :SPARTATechnique,
+        [ a owl:Restriction ;
+            owl:onProperty :enables ;
+            owl:someValuesFrom :ST0005 ] .
+
+:SPARTAReconnaissanceTechnique a owl:Class ;
+    rdfs:label "Reconnaissance - SPARTA - Technique" ;
+    rdfs:subClassOf :OffensiveTechnique,
+        :SPARTATechnique,
+        [ a owl:Restriction ;
+            owl:onProperty :enables ;
+            owl:someValuesFrom :ST0001 ] .
+
+:SPARTAResourceDevelopmentTechnique a owl:Class ;
+    rdfs:label "Resource Development - SPARTA - Technique" ;
+    rdfs:subClassOf :OffensiveTechnique,
+        :SPARTATechnique,
+        [ a owl:Restriction ;
+            owl:onProperty :enables ;
+            owl:someValuesFrom :ST0002 ] .
+
+:SPARTATactic a owl:Class ;
+    rdfs:label "SPARTA Tactic" ;
+    rdfs:subClassOf :Goal,
+        :SPARTAThing,
+        [ a owl:Restriction ;
+            owl:onProperty :enabled-by ;
+            owl:someValuesFrom :SPARTATechnique ] ;
+    :definition "SPARTA Tactics represent the 'why' of a SPARTA technique. They denote the tactical goal of a threat actor and the reason for performing a technique. For example, a threat actor may aim to achieve initial access on a spacecraft via cyber means. Similar to Offensive Tactics in the ATT&CK framework, which are defined as tactical goals rather than mere tactics, SPARTA Tactics encompass the broader objectives behind the actions taken by threat actors in the space cyber domain." ;
+    rdfs:seeAlso <https://sparta.aerospace.org/tactic/SPARTA> .
+
+:SPARTATechnique a owl:Class ;
+    rdfs:label "SPARTA Technique" ;
+    rdfs:subClassOf :Action,
+        :SPARTAThing,
+        :Technique,
+        [ a owl:Restriction ;
+            owl:onProperty :enables ;
+            owl:someValuesFrom :SPARTATactic ] ;
+    :definition "SPARTA Techniques represent 'how' a threat actor achieves a tactical goal by performing specific actions to accomplish their objectives. Similar to Offensive Techniques in the ATT&CK framework, SPARTA Techniques encompass the detailed methods used by the adversary in the context of the space cyber domain." ;
+    rdfs:seeAlso <https://sparta.aerospace.org/technique/SPARTA> .
+
 :SPARTAThing a owl:Class ;
     rdfs:label "SPARTA Thing" ;
     rdfs:subClassOf :ExternalThreatModelThing .
@@ -17912,6 +18028,114 @@ Towards Data Science. (n.d.). Spectral Clustering. [Link](https://towardsdatasci
     rdfs:subClassOf :RemoteSession ;
     :definition "A Secure Shell Protocol (SSH) session is a session over a secure channel established using SSH to connect a client to a server and establish the remote session." ;
     rdfs:seeAlso <http://dbpedia.org/resource/Secure_Shell_Protocol> .
+
+:ST0001 a owl:Class,
+        owl:NamedIndividual,
+        :SPARTATactic ;
+    rdfs:label "Reconnaissance - SPARTA" ;
+    skos:prefLabel "Reconnaissance" ;
+    rdfs:subClassOf :OffensiveTactic,
+        :SPARTATactic ;
+    :definition "Threat actor is trying to gather information they can use to plan future operations." ;
+    :display-order 1 ;
+    rdfs:seeAlso <https://sparta.aerospace.org/tactic/ST0001> ;
+    :sparta-id "ST0001" .
+
+:ST0002 a owl:Class,
+        owl:NamedIndividual,
+        :SPARTATactic ;
+    rdfs:label "Resource Development - SPARTA" ;
+    skos:prefLabel "Resource Development" ;
+    rdfs:subClassOf :OffensiveTactic,
+        :SPARTATactic ;
+    :definition "Threat actor is trying to establish resources they can use to support operations." ;
+    :display-order 2 ;
+    rdfs:seeAlso <https://sparta.aerospace.org/tactic/ST0002> ;
+    :sparta-id "ST0002" .
+
+:ST0003 a owl:Class,
+        owl:NamedIndividual,
+        :SPARTATactic ;
+    rdfs:label "Initial Access - SPARTA" ;
+    skos:prefLabel "Initial Access" ;
+    rdfs:subClassOf :OffensiveTactic,
+        :SPARTATactic ;
+    :definition "Threat actor is trying to get point of presence/command execution on the spacecraft." ;
+    :display-order 3 ;
+    rdfs:seeAlso <https://sparta.aerospace.org/tactic/ST0003> ;
+    :sparta-id "ST0003" .
+
+:ST0004 a owl:Class,
+        owl:NamedIndividual,
+        :SPARTATactic ;
+    rdfs:label "Execution - SPARTA" ;
+    skos:prefLabel "Execution" ;
+    rdfs:subClassOf :OffensiveTactic,
+        :SPARTATactic ;
+    :definition "Threat actor is trying to execute malicious code on the spacecraft." ;
+    :display-order 4 ;
+    rdfs:seeAlso <https://sparta.aerospace.org/tactic/ST0004> ;
+    :sparta-id "ST0004" .
+
+:ST0005 a owl:Class,
+        owl:NamedIndividual,
+        :SPARTATactic ;
+    rdfs:label "Persistence - SPARTA" ;
+    skos:prefLabel "Persistence" ;
+    rdfs:subClassOf :OffensiveTactic,
+        :SPARTATactic ;
+    :definition "Threat actor is trying to maintain their foothold/access to command/execute code on the spacecraft." ;
+    :display-order 5 ;
+    rdfs:seeAlso <https://sparta.aerospace.org/tactic/ST0005> ;
+    :sparta-id "ST0005" .
+
+:ST0006 a owl:Class,
+        owl:NamedIndividual,
+        :SPARTATactic ;
+    rdfs:label "Defense Evasion - SPARTA" ;
+    skos:prefLabel "Defense Evasion" ;
+    rdfs:subClassOf :OffensiveTactic,
+        :SPARTATactic ;
+    :definition "Threat actor is trying to avoid being detected." ;
+    :display-order 6 ;
+    rdfs:seeAlso <https://sparta.aerospace.org/tactic/ST0006> ;
+    :sparta-id "ST0006" .
+
+:ST0007 a owl:Class,
+        owl:NamedIndividual,
+        :SPARTATactic ;
+    rdfs:label "Lateral Movement - SPARTA" ;
+    skos:prefLabel "Lateral Movement" ;
+    rdfs:subClassOf :OffensiveTactic,
+        :SPARTATactic ;
+    :definition "Threat actor is trying to move through across sub-systems of the spacecraft." ;
+    :display-order 7 ;
+    rdfs:seeAlso <https://sparta.aerospace.org/tactic/ST0007> ;
+    :sparta-id "ST0007" .
+
+:ST0008 a owl:Class,
+        owl:NamedIndividual,
+        :SPARTATactic ;
+    rdfs:label "Exfiltration - SPARTA" ;
+    skos:prefLabel "Exfiltration" ;
+    rdfs:subClassOf :OffensiveTactic,
+        :SPARTATactic ;
+    :definition "Threat actor is trying to steal information." ;
+    :display-order 8 ;
+    rdfs:seeAlso <https://sparta.aerospace.org/tactic/ST0008> ;
+    :sparta-id "ST0008" .
+
+:ST0009 a owl:Class,
+        owl:NamedIndividual,
+        :SPARTATactic ;
+    rdfs:label "Impact - SPARTA" ;
+    skos:prefLabel "Impact" ;
+    rdfs:subClassOf :OffensiveTactic,
+        :SPARTATactic ;
+    :definition "Threat actor is trying to manipulate, interrupt, or destroy the space system(s) and/or data." ;
+    :display-order 9 ;
+    rdfs:seeAlso <https://sparta.aerospace.org/tactic/ST0009> ;
+    :sparta-id "ST0009" .
 
 :StackComponent a owl:Class ;
     rdfs:label "Stack Component" ;

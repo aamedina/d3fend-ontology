@@ -7,6 +7,8 @@ D3FEND_RELEASE_DATE :="2024-04-26T00:00:00.000Z"
 
 ATTACK_VERSION := 15.0
 
+SPARTA_VERSION := 1.6
+
 JENA_VERSION := 4.5.0
 
 JENA_PATH := "bin/jena/apache-jena-${JENA_VERSION}/bin"
@@ -132,6 +134,16 @@ download-attack:
 
 update-attack:
 	bash src/util/update_attack.sh $(ATTACK_VERSION)
+	$(END)
+
+download-sparta:
+	mkdir -p data
+	echo "Version: $(SPARTA_VERSION)"
+	cd data; wget https://sparta.aerospace.org/download/STIX?f=sparta_data_v$(SPARTA_VERSION).json -O sparta_data_v$(SPARTA_VERSION).json
+	$(END)
+
+update-sparta:
+	bash src/util/update_sparta.sh $(SPARTA_VERSION)
 	$(END)
 
 update-puns:
