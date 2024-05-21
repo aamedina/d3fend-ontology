@@ -17888,14 +17888,6 @@ Application-layer discovery:
     skos:altLabel "SaaS" ;
     rdfs:subClassOf :Service .
 
-:SoftwareThreat a owl:Class ;
-    rdfs:label "Software Threat" ;
-    skos:prefLabel "Software" ;
-    rdfs:subClassOf :DefenseInDepthThing,
-        [ a owl:Restriction ;
-            owl:onProperty :semantic-relation ;
-            owl:someValuesFrom :OffensiveTechnique ] .
-
 :SoftwareUpdate a owl:Class,
         owl:NamedIndividual,
         :SoftwareUpdate ;
@@ -17947,7 +17939,10 @@ The goal is for homophones to be encoded to the same representation so that they
     rdfs:label "Spacecraft Software Threat" ;
     skos:prefLabel "S/C Software" ;
     skos:altLabel "Spacecraft Software" ;
-    rdfs:subClassOf :SoftwareThreat ;
+    rdfs:subClassOf :DefenseInDepthThing,
+        [ a owl:Restriction ;
+            owl:onProperty :may-be-associated-with ;
+            owl:someValuesFrom :OffensiveTechnique ] ;
     :definition "Spacecraft software threats target the software components of spacecraft, including flight software and on-board applications. These threats may involve software vulnerabilities, malicious code insertion, and exploitation of software weaknesses, potentially compromising the spacecraft's functionality and security." .
 
 :SPARTA-DE-0001 a owl:Class,
