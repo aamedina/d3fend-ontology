@@ -3605,6 +3605,12 @@ Wikipedia. (n.d.). Coefficient of variation. [Link](https://en.wikipedia.org/wik
     rdfs:subClassOf :CAPECThing ;
     :definition "A common attack pattern that is in the CAPEC knowledge base." .
 
+:CommsLinkThreat a owl:Class ;
+    rdfs:label "Comms Link Threat" ;
+    skos:prefLabel "Comms Link" ;
+    rdfs:subClassOf :DefenseInDepthThing ;
+    :definition "Space communication link threats involve the interception, jamming, or manipulation of communication signals between spacecraft and ground stations or between spacecraft. These threats can disrupt command and control, data transmission, and overall mission operations." .
+
 :Compiler a owl:Class ;
     rdfs:label "Compiler" ;
     rdfs:subClassOf :BuildTool,
@@ -4115,6 +4121,13 @@ Management servers with enterprise policies for account management provide the a
     rdfs:subClassOf :DigitalInformation ;
     rdfs:isDefinedBy <http://dbpedia.org/resource/Public-key_cryptography> ;
     :definition "In cryptography, a key is a piece of information (a parameter) that determines the functional output of a cryptographic algorithm. For encryption algorithms, a key specifies the transformation of plaintext into ciphertext, and vice versa for decryption algorithms. Keys also specify transformations in other cryptographic algorithms, such as digital signature schemes and message authentication codes." .
+
+:CryptoThreat a owl:Class ;
+    rdfs:label "Crypto Threat" ;
+    skos:prefLabel "Crypto" ;
+    skos:altLabel "Cryptography" ;
+    rdfs:subClassOf :DefenseInDepthThing ;
+    :definition "Space cryptographic threats target the encryption mechanisms used to protect sensitive data and communications in space systems. These threats may include cryptographic key compromise, weaknesses in encryption algorithms, and bypassing of cryptographic protections." .
 
 :CustomArchiveFile a owl:Class ;
     rdfs:label "Custom Archive File" ;
@@ -9168,6 +9181,11 @@ Datalog generally uses a bottom-up rather than top-down evaluation model. This d
 ## References
 1. Datalog. (2023, April 20). In _Wikipedia_. [Link](https://en.wikipedia.org/wiki/Datalog)""" .
 
+:DataThreat a owl:Class ;
+    rdfs:label "Data Threat" ;
+    rdfs:subClassOf :DefenseInDepthThing ;
+    :definition "Data threats encompass risks to the confidentiality, integrity, and availability of data at rest, in transit, or during processing. These threats include unauthorized access, data breaches, and data manipulation, which can severely impact the operation and security of space and ground systems." .
+
 :DBSCAN a owl:Class,
         owl:NamedIndividual ;
     rdfs:label "DBSCAN" ;
@@ -9587,6 +9605,12 @@ Q-learning. Wikipedia.  [Link](https://en.wikipedia.org/wiki/Q-learning#Deep_Q-l
         [ a owl:Restriction ;
             owl:onProperty :enables ;
             owl:someValuesFrom :TA0005 ] .
+
+:DefenseInDepthThing a owl:Class ;
+    rdfs:label "Defense-in-Depth Thing" ;
+    rdfs:subClassOf :ExternalThreatModelThing ;
+    :definition "Defense-in-Depth Things represent the conceptual layers of security within the Defense-in-Depth model. This model is designed to provide multiple, overlapping layers of defense to protect space and ground systems from a wide range of threats. Each layer addresses specific types of threats and vulnerabilities, contributing to a comprehensive security posture." ;
+    rdfs:seeAlso <https://aerospace.org/sites/default/files/2022-07/DistroA-TOR-2021-01333-Cybersecurity%20Protections%20for%20Spacecraft--A%20Threat%20Based%20Approach.pdf> .
 
 :DefensiveTactic a owl:Class ;
     rdfs:label "Defensive Tactic" ;
@@ -11443,6 +11467,12 @@ TechVidvan. (n.d.). Clustering in Machine Learning Tutorial. [Link](https://tech
     :kb-article """## References
 Talukdar, P. (2020, June 10). Convolutional Neural Networks Explained. Towards Data Science. [Link](https://towardsdatascience.com/convolutional-neural-networks-explained-9cc5188c4939)""" .
 
+:GroundThreat a owl:Class ;
+    rdfs:label "Ground Threat" ;
+    skos:prefLabel "Ground" ;
+    rdfs:subClassOf :DefenseInDepthThing ;
+    :definition "Ground threats encompass risks to ground infrastructure supporting space missions." .
+
 :Grouping a owl:Class ;
     rdfs:label "Grouping" ;
     rdfs:subClassOf :Summarizing .
@@ -12428,6 +12458,12 @@ Beginner's Guide to Semi-Supervised Learning. Jashish Blog.  [Link](http://jashi
 
 Intrusion prevention systems are considered extensions of intrusion detection systems because they both monitor network traffic and/or system activities for malicious activity. The main differences are, unlike intrusion detection systems, intrusion prevention systems are placed in-line and are able to actively prevent or block intrusions that are detected. IPS can take such actions as sending an alarm, dropping detected malicious packets, resetting a connection or blocking traffic from the offending IP address. An IPS also can correct cyclic redundancy check (CRC) errors, defragment packet streams, mitigate TCP sequencing issues, and clean up unwanted transport and network layer options.""" ;
     rdfs:seeAlso <http://dbpedia.org/resource/Intrusion_detection_system> .
+
+:IntrusionThreat a owl:Class ;
+    rdfs:label "Intrusion Threat" ;
+    skos:prefLabel "IDS/IPS" ;
+    rdfs:subClassOf :DefenseInDepthThing ;
+    :definition "Intrusion detection and prevention system threats involve attacks on the monitoring systems designed to detect and respond to anomalous activities within spacecraft. These threats can undermine the effectiveness of intrusion detection and prevention capabilities, leading to undetected security breaches." .
 
 :IOPortRestriction a :IOPortRestriction,
         owl:Class,
@@ -15745,6 +15781,12 @@ Policy Gradients in a Nutshell. Towards Data Science.  [Link](https://towardsdat
 2. Higher-order logic. (2023, May 13)
 [Link](https://en.wikipedia.org/wiki/Higher-order_logic)""" .
 
+:PreventionThreat a owl:Class ;
+    rdfs:label "Prevention Threat" ;
+    skos:prefLabel "Prevention" ;
+    rdfs:subClassOf :DefenseInDepthThing ;
+    :definition "Prevention measures are proactive security controls implemented to mitigate risks associated with space systems. These measures include supply chain risk management, secure development practices, and comprehensive cybersecurity policies to prevent unauthorized access and malicious activities. The threat of not implementing preventative controls." .
+
 :PrimaryStorage a owl:Class ;
     rdfs:label "Primary Storage" ;
     rdfs:subClassOf :HardwareDevice,
@@ -17702,6 +17744,13 @@ Another difference are the capabilities of the mechanism:
     rdfs:label "Simulation" ;
     rdfs:subClassOf :Generation .
 
+:SingleBoardComputerThreat a owl:Class ;
+    rdfs:label "Single Board Computer Threat" ;
+    skos:prefLabel "SBC" ;
+    skos:altLabel "Single Board Computer" ;
+    rdfs:subClassOf :DefenseInDepthThing ;
+    :definition "Single board computer threats target the processing units of spacecraft. These threats include unauthorized access, command injection, and hardware tampering, which can affect the execution of critical functions and overall system integrity." .
+
 :SingularValueDecomposition a owl:Class,
         owl:NamedIndividual ;
     rdfs:label "Singular Value Decomposition" ;
@@ -17839,6 +17888,14 @@ Application-layer discovery:
     skos:altLabel "SaaS" ;
     rdfs:subClassOf :Service .
 
+:SoftwareThreat a owl:Class ;
+    rdfs:label "Software Threat" ;
+    skos:prefLabel "Software" ;
+    rdfs:subClassOf :DefenseInDepthThing,
+        [ a owl:Restriction ;
+            owl:onProperty :semantic-relation ;
+            owl:someValuesFrom :OffensiveTechnique ] .
+
 :SoftwareUpdate a owl:Class,
         owl:NamedIndividual,
         :SoftwareUpdate ;
@@ -17885,6 +17942,13 @@ The goal is for homophones to be encoded to the same representation so that they
     rdfs:label "Source Code Reference" ;
     rdfs:subClassOf :TechniqueReference ;
     :pref-label "Source Code" .
+
+:SpacecraftSoftwareThreat a owl:Class ;
+    rdfs:label "Spacecraft Software Threat" ;
+    skos:prefLabel "S/C Software" ;
+    skos:altLabel "Spacecraft Software" ;
+    rdfs:subClassOf :SoftwareThreat ;
+    :definition "Spacecraft software threats target the software components of spacecraft, including flight software and on-board applications. These threats may involve software vulnerabilities, malicious code insertion, and exploitation of software weaknesses, potentially compromising the spacecraft's functionality and security." .
 
 :SPARTACountermeasure a owl:Class ;
     rdfs:label "SPARTA Countermeasure" ;
@@ -17997,6 +18061,21 @@ The goal is for homophones to be encoded to the same representation so that they
 :SPARTAThing a owl:Class ;
     rdfs:label "SPARTA Thing" ;
     rdfs:subClassOf :ExternalThreatModelThing .
+
+:SPARTAThreat a owl:Class ;
+    rdfs:label "SPARTA Threat" ;
+    rdfs:subClassOf :SPARTAThing,
+        [ a owl:Restriction ;
+            owl:onProperty :semantic-relation ;
+            owl:someValuesFrom :CommonAttackPattern ],
+        [ a owl:Restriction ;
+            owl:onProperty :semantic-relation ;
+            owl:someValuesFrom :SPARTACountermeasure ],
+        [ a owl:Restriction ;
+            owl:onProperty :semantic-relation ;
+            owl:someValuesFrom :SPARTATechnique ] ;
+    :definition "SPARTA Threats are threats identified through expert interviews and publications that are cross-referenced to the SPARTA matrix TTPs. They help in identifying likely threats for space systems and aid in generating security requirements baselines." ;
+    rdfs:seeAlso <https://sparta.aerospace.org/related-work/threats> .
 
 :SpearmansRankCorrelationCoefficient a owl:Class,
         owl:NamedIndividual ;
