@@ -164,7 +164,6 @@ def add_countermeasure_to_graph(src, g, d3fend_graph, countermeasure):
         # Create a URI for the SPARTA Countermeasure
         sparta_uri = D3F[f"{sparta_id}"]
         g.add((sparta_uri, RDF.type, D3F.SPARTACountermeasure))
-        g.add((sparta_uri, RDF.type, OWL.Class))
         g.add((sparta_uri, RDF.type, OWL.NamedIndividual))
         g.add((sparta_uri, RDFS.label, Literal(countermeasure["name"])))
         sparta_url = next(
