@@ -33089,7 +33089,8 @@ Reconnaissance consists of techniques that involve adversaries actively or passi
         [ a owl:Restriction ;
             owl:onProperty :analyzes ;
             owl:someValuesFrom :Telecommand ] ;
-    :definition "The systematic examination using static inspection, dynamic simulation, protocol decoding, and anomaly-detection techniques of telecommand traffic or individual command objects to assess correctness, safety, compliance, and potential malicious intent before those commands are propagated or executed." .
+    :definition "The systematic examination using static inspection, dynamic simulation, protocol decoding, and anomaly-detection techniques of telecommand traffic or individual command objects to assess correctness, safety, compliance, and potential malicious intent before those commands are propagated or executed." ;
+    :kb-article "## How it works" .
 
 :TelecommandAuthentication a owl:Class,
         owl:NamedIndividual,
@@ -33100,7 +33101,8 @@ Reconnaissance consists of techniques that involve adversaries actively or passi
             owl:onProperty :authenticates ;
             owl:someValuesFrom :Telecommand ] ;
     :d3fend-id "D3-TCAN" ;
-    :definition "The application of cryptographic or protocol-level techniques that enable any remotely controlled device, or its control system, to verify, with cryptographic assurance, the origin, integrity, and freshness of every received telecommand before execution, thereby preventing spoofing, injection, replay, or unauthorized modification." .
+    :definition "The application of cryptographic or protocol-level techniques that enable any remotely controlled device, or its control system, to verify, with cryptographic assurance, the origin, integrity, and freshness of every received telecommand before execution, thereby preventing spoofing, injection, replay, or unauthorized modification." ;
+    :kb-article "## How it works" .
 
 :TelecommandEncryption a owl:Class,
         owl:NamedIndividual,
@@ -33111,7 +33113,8 @@ Reconnaissance consists of techniques that involve adversaries actively or passi
             owl:onProperty :encrypts ;
             owl:someValuesFrom :Telecommand ] ;
     :d3fend-id "D3-TCECR" ;
-    :definition "The cryptographic transformation of a telecommand's payload, headers, or entire packet into ciphertext such that the command's contents remain unintelligible to any entity that lacks the appropriate decryption key." .
+    :definition "The cryptographic transformation of a telecommand's payload, headers, or entire packet into ciphertext such that the command's contents remain unintelligible to any entity that lacks the appropriate decryption key." ;
+    :kb-article "## How it works" .
 
 :Telemetry a owl:Class ;
     rdfs:label "Telemetry" ;
