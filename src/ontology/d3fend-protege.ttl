@@ -33081,7 +33081,9 @@ Reconnaissance consists of techniques that involve adversaries actively or passi
     :d3fend-id "D3-TCA" ;
     :definition "A command sent to control a remote system that is not physically connected to the sender, transmitted through a telecommunications channel in any suitable encoding, and carrying enough information for the recipient to interpret and execute the intended action." .
 
-:TelecommandAnalysis a owl:Class ;
+:TelecommandAnalysis a owl:Class,
+        owl:NamedIndividual,
+        :TelecommandAnalysis ;
     rdfs:label "Telecommand Analysis" ;
     rdfs:subClassOf :MessageAnalysis,
         [ a owl:Restriction ;
@@ -33089,7 +33091,9 @@ Reconnaissance consists of techniques that involve adversaries actively or passi
             owl:someValuesFrom :Telecommand ] ;
     :definition "The systematic examination using static inspection, dynamic simulation, protocol decoding, and anomaly-detection techniques of telecommand traffic or individual command objects to assess correctness, safety, compliance, and potential malicious intent before those commands are propagated or executed." .
 
-:TelecommandAuthentication a owl:Class ;
+:TelecommandAuthentication a owl:Class,
+        owl:NamedIndividual,
+        :TelecommandAuthentication ;
     rdfs:label "Telecommand Authentication" ;
     rdfs:subClassOf :MessageAuthentication,
         [ a owl:Restriction ;
@@ -33098,7 +33102,9 @@ Reconnaissance consists of techniques that involve adversaries actively or passi
     :d3fend-id "D3-TCAN" ;
     :definition "The application of cryptographic or protocol-level techniques that enable any remotely controlled device, or its control system, to verify, with cryptographic assurance, the origin, integrity, and freshness of every received telecommand before execution, thereby preventing spoofing, injection, replay, or unauthorized modification." .
 
-:TelecommandEncryption a owl:Class ;
+:TelecommandEncryption a owl:Class,
+        owl:NamedIndividual,
+        :TelecommandEncryption ;
     rdfs:label "Telecommand Encryption" ;
     rdfs:subClassOf :MessageEncryption,
         [ a owl:Restriction ;
