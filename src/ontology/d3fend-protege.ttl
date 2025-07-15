@@ -2212,14 +2212,14 @@ In a more general sense, ASP includes all applications of answer sets to knowled
 
 :Antenna a owl:Class ;
     rdfs:label "Antenna" ;
-    rdfs:subClassOf :PhysicalArtifact,
-        [ owl:unionOf (
-                    [ a owl:Restriction ;
-                        owl:onProperty :receives ;
-                        owl:someValuesFrom :RFSignal ]
-                    [ a owl:Restriction ;
-                        owl:onProperty :transmits ;
-                        owl:someValuesFrom :RFSignal ] ) ] ;
+    rdfs:subClassOf :DigitalInformationBearer,
+        :PhysicalArtifact,
+        [ a owl:Restriction ;
+            owl:onProperty :receives ;
+            owl:someValuesFrom :RFSignal ],
+        [ a owl:Restriction ;
+            owl:onProperty :transmits ;
+            owl:someValuesFrom :RFSignal ] ;
     rdfs:isDefinedBy <http://dbpedia.org/resource/Antenna_(radio)> ;
     :definition "A physical transducer that converts guided electrical energy into electromagnetic radiation, and vice versa, so that signals can be transmitted to, or received from, free space or another propagation medium." .
 
@@ -15040,7 +15040,8 @@ Talukdar, P. (2020, June 10). Convolutional Neural Networks Explained. Towards D
 
 :GroundStation a owl:Class ;
     rdfs:label "Ground Station" ;
-    rdfs:subClassOf :PhysicalArtifact,
+    rdfs:subClassOf :DigitalInformationBearer,
+        :PhysicalArtifact,
         [ a owl:Restriction ;
             owl:onProperty :contains ;
             owl:someValuesFrom :FrontEndProcessor ],
@@ -19510,6 +19511,9 @@ Operating System Monitoring Techniques have varied implementations including bui
 :OpticalTelescope a owl:Class ;
     rdfs:label "Optical Telescope" ;
     rdfs:subClassOf :DigitalArtifact,
+        [ a owl:Restriction ;
+            owl:onProperty :receives ;
+            owl:someValuesFrom :FreeSpaceOpticalSignal ],
         [ a owl:Restriction ;
             owl:onProperty :transmits ;
             owl:someValuesFrom :FreeSpaceOpticalSignal ] ;
@@ -34061,7 +34065,8 @@ Intro to Active Learning. inovex Blog.  [Link](https://www.inovex.de/de/blog/int
 
 :Vehicle a owl:Class ;
     rdfs:label "Vehicle" ;
-    rdfs:subClassOf :PhysicalArtifact ;
+    rdfs:subClassOf :DigitalInformationBearer,
+        :PhysicalArtifact ;
     rdfs:isDefinedBy <http://dbpedia.org/resource/Vehicle> ;
     :definition "A vehicle is a machine designed for self-propulsion, usually to transport people, cargo, or both." .
 
