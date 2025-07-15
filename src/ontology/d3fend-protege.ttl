@@ -18248,18 +18248,12 @@ Symmetric encryption uses the same cryptographic key by both the sender and rece
     rdfs:subClassOf :Signal ;
     :definition "An electromagnetic signal in the microwave frequency range, used for radar, communication, and cooking." .
 
-:MissionPlan a owl:Class ;
-    rdfs:label "Mission Plan" ;
-    rdfs:subClassOf :DigitalInformationBearer,
-        :Plan ;
-    :definition "A plan or activity that defines what the satellite needs to do and when, at a high conceptual level. It identifies the operational need for a command." .
-
 :MissionPlanningSoftware a owl:Class ;
     rdfs:label "Mission Planning Software" ;
     rdfs:subClassOf :Software,
         [ a owl:Restriction ;
             owl:onProperty :produces ;
-            owl:someValuesFrom :MissionPlan ] ;
+            owl:someValuesFrom :OrganizationalActivity ] ;
     :definition "Mission Planning Software is a specialized application suite that enables spacecraft operators to design, schedule, and optimize sequences of activities and commands for satellite missions over time." ;
     rdfs:seeAlso <https://www.ssc.spaceforce.mil/Newsroom/Article-Display/Article/4105811/the-future-of-space-force-software-acquisitionsa-case-study-in-satellite-commun> ;
     :synonyms "Mission Control Software" .
@@ -19564,7 +19558,8 @@ Operating System Monitoring Techniques have varied implementations including bui
 
 :OrganizationalActivity a owl:Class ;
     rdfs:label "Organizational Activity" ;
-    rdfs:subClassOf :Plan ;
+    rdfs:subClassOf :DigitalInformationBearer,
+        :Plan ;
     :definition "An activity is a specific behavior representing a set of actions that may be accomplished by an agent." ;
     rdfs:seeAlso "Mission Critical Function",
         <http://wordnet-rdf.princeton.edu/id/00408356-n>,
