@@ -14766,8 +14766,7 @@ The DNS lookup can be blocked by either dropping the network traffic with an inl
 
 :FreeSpaceOpticalSignal a owl:Class ;
     rdfs:label "Free Space Optical Signal" ;
-    rdfs:subClassOf :DigitalArtifact,
-        :OpticalSignal ;
+    rdfs:subClassOf :OpticalSignal ;
     rdfs:isDefinedBy <http://dbpedia.org/resource/Free-space_optical_communication> ;
     :definition "A free space optical (FSO) signal refers to the wireless transmission of data using light beams, typically laser or LED, through the atmosphere or free space. It's a form of optical communication that doesn't rely on physical cables like fiber optics." .
 
@@ -19485,12 +19484,12 @@ Operating System Monitoring Techniques have varied implementations including bui
 
 :OpticalModulator a owl:Class ;
     rdfs:label "Optical Modulator" ;
-    rdfs:subClassOf :DigitalArtifact ;
+    rdfs:subClassOf :HardwareDevice ;
     :definition "An optical modulator is a device which is used to modulate a beam of light. The beam may be carried over free space, or propagated through an optical waveguide (optical fibre)." .
 
 :OpticalReceiver a owl:Class ;
     rdfs:label "Optical Receiver" ;
-    rdfs:subClassOf :DigitalArtifact,
+    rdfs:subClassOf :HardwareDevice,
         [ a owl:Restriction ;
             owl:onProperty :receives ;
             owl:someValuesFrom :FreeSpaceOpticalSignal ] ;
@@ -19504,7 +19503,7 @@ Operating System Monitoring Techniques have varied implementations including bui
 
 :OpticalTelescope a owl:Class ;
     rdfs:label "Optical Telescope" ;
-    rdfs:subClassOf :DigitalArtifact,
+    rdfs:subClassOf :HardwareDevice,
         [ a owl:Restriction ;
             owl:onProperty :receives ;
             owl:someValuesFrom :FreeSpaceOpticalSignal ],
@@ -19515,7 +19514,7 @@ Operating System Monitoring Techniques have varied implementations including bui
 
 :OpticalTransmitterSystem a owl:Class ;
     rdfs:label "Optical Transmitter System" ;
-    rdfs:subClassOf :DigitalArtifact,
+    rdfs:subClassOf :HardwareDevice,
         [ a owl:Restriction ;
             owl:onProperty :contains ;
             owl:someValuesFrom :Laser ],
