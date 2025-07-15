@@ -120,6 +120,11 @@
     rdfs:subPropertyOf :semantic-relation ;
     :definition "x broader-transitive y: The entity x represents a more general concept than entity y, including indirect or hierarchical relationships where x encompasses y through intermediate entities." .
 
+:carries a owl:ObjectProperty ;
+    rdfs:label "carries" ;
+    rdfs:subPropertyOf :associated-with ;
+    :definition "x carries y: The subject x enables the transmission or propagation of a signal y by serving as the medium or channel through which its energy and encoded information travel from a source to a destination." .
+
 :caused-by a owl:ObjectProperty ;
     rdfs:label "caused-by" ;
     rdfs:subPropertyOf :associated-with ;
@@ -616,6 +621,11 @@ Moving forward different distinctions of kinds of has-part (contains) relationsh
     rdfs:isDefinedBy <http://wordnet-rdf.princeton.edu/id/00496744-v> ;
     :definition "x isolates y: The technique or agent x sets digital artifact y apart from other digital artifacts, sequestering y." .
 
+:jams a owl:ObjectProperty ;
+    rdfs:label "jams" ;
+    rdfs:subPropertyOf :associated-with ;
+    :definition "x jams y: The subject x deliberately introduces interfering energy that degrades, disrupts, blocks, or masks the information-bearing capability of the target y." .
+
 :kb-reference a owl:ObjectProperty ;
     rdfs:label "kb-reference" ;
     skos:altLabel "has-technique-reference" ;
@@ -1041,6 +1051,11 @@ Moving forward different distinctions of kinds of has-part (contains) relationsh
     :definition "x reads y: The subject x takes the action of reading from a digital source y to acquire data and placing it into volatile memory for processing." ;
     rdfs:seeAlso <http://dbpedia.org/resource/Reading_(computer)>,
         <http://wordnet-rdf.princeton.edu/id/00629157-v> .
+
+:receives a owl:ObjectProperty ;
+    rdfs:label "receives" ;
+    rdfs:subPropertyOf :associated-with ;
+    :definition "x receives y: The subject x acquires object y from a communication medium and transfers y into its local context for storage or processing." .
 
 :recorded-in a owl:ObjectProperty ;
     rdfs:label "recorded-in" ;
@@ -1844,6 +1859,11 @@ Management servers with enterprise policies for account management provide the a
     :kb-reference :Reference-AccountMonitoring_ForescoutTechnologies,
         :Reference-FrameworkForNotifyingADirectoryServiceOfAuthenticationEventsProcessedOutsideTheDirectoryService_OracleInternationalCorp .
 
+:AcousticSignal a owl:Class ;
+    rdfs:label "Acoustic Signal" ;
+    rdfs:subClassOf :Signal ;
+    :definition "A signal that propagates through mechanical vibrations in a medium, such as air, water, or solid materials." .
+
 :Action a owl:Class ;
     rdfs:label "Action" ;
     rdfs:subClassOf :Event,
@@ -2189,6 +2209,27 @@ In a more general sense, ASP includes all applications of answer sets to knowled
 ## References
 1. Answer set programming. (2023, April 27). In _Wikipedia_. [Link](https://en.wikipedia.org/wiki/Answer_set_programming)""" ;
     :synonym "ASP" .
+
+:Antenna a owl:Class ;
+    rdfs:label "Antenna" ;
+    rdfs:subClassOf :PhysicalArtifact,
+        [ owl:unionOf (
+                    [ a owl:Restriction ;
+                        owl:onProperty :receives ;
+                        owl:someValuesFrom :RFSignal ]
+                    [ a owl:Restriction ;
+                        owl:onProperty :transmits ;
+                        owl:someValuesFrom :RFSignal ] ) ] ;
+    rdfs:isDefinedBy <http://dbpedia.org/resource/Antenna_(radio)> ;
+    :definition "A physical transducer that converts guided electrical energy into electromagnetic radiation, and vice versa, so that signals can be transmitted to, or received from, free space or another propagation medium." .
+
+:AntennaController a owl:Class ;
+    rdfs:label "Antenna Controller" ;
+    rdfs:subClassOf :EmbeddedComputer,
+        [ a owl:Restriction ;
+            owl:onProperty :controls ;
+            owl:someValuesFrom :Antenna ] ;
+    :definition "A hardware or software system that controls the movement of an antenna (azimuth, elevation, and polarization)." .
 
 :Application a owl:Class ;
     rdfs:label "Application" ;
@@ -3371,6 +3412,11 @@ Classification and Regression Tree (CART) Algorithm. Analytics Steps. [Link](htt
             owl:onProperty :published ;
             owl:someValuesFrom xsd:dateTime ] .
 
+:CellularLink a owl:Class ;
+    rdfs:label "Cellular Link" ;
+    rdfs:subClassOf :RFLink ;
+    :definition "A radio frequency link used in mobile telephone networks, enabling communication between mobile devices and base stations using standardized protocols and frequency allocations." .
+
 :CentralProcessingUnit a owl:Class ;
     rdfs:label "Central Processing Unit" ;
     rdfs:subClassOf :Processor,
@@ -3855,6 +3901,11 @@ Cluster analysis. (n.d.). Wikipedia. [Link](https://en.wikipedia.org/wiki/Cluste
     rdfs:label "Clustering" ;
     rdfs:subClassOf :Summarizing .
 
+:CoaxialLink a owl:Class ;
+    rdfs:label "Coaxial Link" ;
+    rdfs:subClassOf :ElectricalLink ;
+    :definition "An electrical link consisting of a central conductor surrounded by a dielectric insulator and an outer conductor shield, providing controlled impedance and electromagnetic shielding for high-frequency signals." .
+
 :CodeAnalyzer a owl:Class,
         owl:NamedIndividual ;
     rdfs:label "Code Analyzer" ;
@@ -3925,6 +3976,23 @@ Wikipedia. (n.d.). Coefficient of variation. [Link](https://en.wikipedia.org/wik
         [ a owl:Restriction ;
             owl:onProperty :enables ;
             owl:someValuesFrom :TA0011 ] .
+
+:CommandGenerationSoftware a owl:Class ;
+    rdfs:label "Command Generation Software" ;
+    rdfs:subClassOf :Software,
+        [ a owl:Restriction ;
+            owl:onProperty :communicates-with ;
+            owl:someValuesFrom :MissionPlanningSoftware ],
+        [ a owl:Restriction ;
+            owl:onProperty :controlled-by ;
+            owl:someValuesFrom :Person ],
+        [ a owl:Restriction ;
+            owl:onProperty :produces ;
+            owl:someValuesFrom :SpaceProtocolNetworkTraffic ],
+        [ a owl:Restriction ;
+            owl:onProperty :produces ;
+            owl:someValuesFrom :Telecommand ] ;
+    :definition "The Command Generation System (CGS) is the software component that takes the high-level scheduled activity from mission planning and translates it into a Telecommand (as a structured digital object). This Telecommand typically conforms to standards like the CCSDS Space Packet Protocol (e.g., CCSDS 133.0-B). It includes the specific application data (the instruction and its parameters) and the necessary Space Packet headers (APID, sequence count, etc.)." .
 
 :CommandHistoryLog a owl:Class ;
     rdfs:label "Command History Log" ;
@@ -12537,6 +12605,19 @@ Analyzing the interaction of a piece of code with a system while the code is bei
     :definition "Dynamic program analysis is the analysis of computer software that is performed by executing programs on a real or virtual processor." ;
     :todo "Find better full description; wikipedia entry is too narrow in focus after first sentence and misses a lot of the security aspects" .
 
+:ElectricalLink a owl:Class ;
+    rdfs:label "Electrical Link" ;
+    rdfs:subClassOf :WiredLink,
+        [ a owl:Restriction ;
+            owl:onProperty :carries ;
+            owl:someValuesFrom :ElectricalSignal ] ;
+    :definition "A wired link that transmits electrical signals through metallic conductors using electron flow. Examples include copper wire, twisted pair cables, and coaxial cables operating with voltage and current variations." .
+
+:ElectricalSignal a owl:Class ;
+    rdfs:label "Electrical Signal" ;
+    rdfs:subClassOf :Signal ;
+    :definition "A type of physical signal that propagates as variations in electrical current or voltage through conductive materials, such as wires or circuits." .
+
 :Email a owl:Class ;
     rdfs:label "Email" ;
     rdfs:subClassOf :DocumentFile,
@@ -13297,7 +13378,13 @@ Pennsylvania State University. (n.d.). Statistical Inference and Estimation. [Li
 :EX-0016 a owl:Class ;
     rdfs:label "Jamming - SPARTA" ;
     skos:prefLabel "Jamming" ;
-    rdfs:subClassOf :ExecutionTechnique ;
+    rdfs:subClassOf :ExecutionTechnique,
+        [ a owl:Restriction ;
+            owl:onProperty :jams ;
+            owl:someValuesFrom :RFSignal ],
+        [ a owl:Restriction ;
+            owl:onProperty :uses ;
+            owl:someValuesFrom :RFTransmitter ] ;
     :attack-id "EX-0016" ;
     :definition """Jamming is an electronic attack that uses radio frequency signals to interfere with communications. A jammer must operate in the same frequency band and within the field of view of the antenna it is targeting. Unlike physical attacks, jamming is completely reversible—once the jammer is disengaged, communications can be restored. Attribution of jamming can be tough because the source can be small and highly mobile, and users operating on the wrong frequency or pointed at the wrong satellite can jam friendly communications.* Similiar to intentional jamming, accidential jamming can cause temporary signal degradation. Accidental jamming refers to unintentional interference with communication signals, and it can potentially impact spacecraft in various ways, depending on the severity, frequency, and duration of the interference.
 
@@ -13385,12 +13472,16 @@ Pennsylvania State University. (n.d.). Statistical Inference and Estimation. [Li
 :EX-0018.02 a owl:Class ;
     rdfs:label "High-Powered Laser - SPARTA" ;
     skos:prefLabel "High-Powered Laser" ;
-    rdfs:subClassOf :EX-0018 ;
+    rdfs:subClassOf :EX-0018,
+        [ a owl:Restriction ;
+            owl:onProperty :jams ;
+            owl:someValuesFrom :FreeSpaceOpticalSignal ] ;
     :attack-id "EX-0018.02" ;
-    :definition """A high-powered laser can be used to permanently or temporarily damage critical satellite components (i.e. solar arrays or optical centers). If directed toward a satellite’s optical center, the attack is known as blinding or dazzling. Blinding, as the name suggests, causes permanent damage to the optics of a satellite. Dazzling causes temporary loss of sight for the satellite. While there is clear attribution of the location of the laser at the time of the attack, the lasers used in these attacks may be mobile, which can make attribution to a specific actor more difficult because the attacker does not have to be in their own nation, or even continent, to conduct such an attack. Only the satellite operator will know if the attack is successful, meaning the attacker has limited confirmation of success, as an attacked nation may not choose to announce that their satellite has been attacked or left vulnerable for strategic reasons. A high-powered laser attack can also leave the targeted satellite disabled and uncontrollable, which could lead to collateral damage if the satellite begins to drift. A higher-powered laser may permanently damage a satellite by overheating its parts. The parts most susceptible to this are satellite structures, thermal control panels, and solar panels.*
+    :definition """A high-powered laser can be used to permanently or temporarily damage critical satellite components (i.e. solar arrays or optical centers). If directed toward a satellite's optical center, the attack is known as blinding or dazzling. Blinding, as the name suggests, causes permanent damage to the optics of a satellite. Dazzling causes temporary loss of sight for the satellite. While there is clear attribution of the location of the laser at the time of the attack, the lasers used in these attacks may be mobile, which can make attribution to a specific actor more difficult because the attacker does not have to be in their own nation, or even continent, to conduct such an attack. Only the satellite operator will know if the attack is successful, meaning the attacker has limited confirmation of success, as an attacked nation may not choose to announce that their satellite has been attacked or left vulnerable for strategic reasons. A high-powered laser attack can also leave the targeted satellite disabled and uncontrollable, which could lead to collateral damage if the satellite begins to drift. A higher-powered laser may permanently damage a satellite by overheating its parts. The parts most susceptible to this are satellite structures, thermal control panels, and solar panels.*
 
 *https://aerospace.csis.org/aerospace101/counterspace-weapons-101""" ;
-    rdfs:seeAlso <https://sparta.aerospace.org/technique/EX-0018/02/> .
+    rdfs:seeAlso <https://ieeexplore.ieee.org/document/9857789>,
+        <https://sparta.aerospace.org/technique/EX-0018/02/> .
 
 :EX-0018.03 a owl:Class ;
     rdfs:label "High-Powered Microwave - SPARTA" ;
@@ -13830,6 +13921,20 @@ Intro to Active Learning. inovex Blog. [Link](https://www.inovex.de/de/blog/intr
     rdfs:isDefinedBy <http://dbpedia.org/resource/Symbolic_link#Storage_of_symbolic_links> ;
     :definition "Fast symbolic links, allow storage of the target path within the data structures used for storing file information on disk (e.g., within the inodes). This space normally stores a list of disk block addresses allocated to a file. Thus, symlinks with short target paths are accessed quickly. Systems with fast symlinks often fall back to using the original method if the target path exceeds the available inode space." ;
     rdfs:seeAlso <http://dbpedia.org/resource/Symbolic_link#Storage_of_symbolic_links> .
+
+:FiberOpticLink a owl:Class ;
+    rdfs:label "Fiber Optic Link" ;
+    rdfs:subClassOf :WiredLink,
+        [ a owl:Restriction ;
+            owl:onProperty :carries ;
+            owl:someValuesFrom :FiberOpticSignal ] ;
+    :definition "A wired link that guides optical signals through a transparent fiber medium using total internal reflection. Light signals are confined within the fiber core and propagate with minimal loss over long distances." .
+
+:FiberOpticSignal a owl:Class ;
+    rdfs:label "Fiber Optic Signal" ;
+    rdfs:subClassOf :OpticalSignal ;
+    rdfs:isDefinedBy <http://dbpedia.org/resource/Fiber-optic_communication> ;
+    :definition "Light signals guided through optical fibers, which are thin strands of glass or plastic designed to transmit light over long distances with minimal loss. The light is confined within the fiber core due to total internal reflection." .
 
 :File a owl:Class ;
     rdfs:label "File" ;
@@ -14577,6 +14682,13 @@ The term "first-order" distinguishes first-order logic from higher-order logic, 
     rdfs:isDefinedBy <https://dbpedia.org/page/Flash_memory> ;
     :definition "Flash memory is an electronic non-volatile computer memory storage medium that can be electrically erased and reprogrammed." .
 
+:FlightSoftware a owl:Class ;
+    rdfs:label "Flight Software" ;
+    rdfs:subClassOf :Software ;
+    :definition "Flight Software (FSW) is software that runs on a processor embedded in a spacecraft's avionics. It is responsible for managing on-board activities, data processing and spacecraft health and safety. The name “flight software” reflects the location where it executes, i.e. in the spacecraft , to differentiate from “ground software”, which runs in the ground segment." ;
+    rdfs:seeAlso <https://phxcubesat.asu.edu/subsystems/flight-software>,
+        <https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13546/135462R/An-evaluation-of-flight-software-platforms-for-small-satellite-missions/10.1117/12.3062481.full> .
+
 :Forecasting a owl:Class ;
     rdfs:label "Forecasting" ;
     rdfs:subClassOf :AnalyticalPurpose .
@@ -14643,6 +14755,40 @@ The DNS lookup can be blocked by either dropping the network traffic with an inl
         [ a owl:Restriction ;
             owl:onProperty :deletes ;
             owl:someValuesFrom :MemoryBlock ] .
+
+:FreeSpaceOpticalLink a owl:Class ;
+    rdfs:label "Free Space Optical Link" ;
+    rdfs:subClassOf :WirelessLink,
+        [ a owl:Restriction ;
+            owl:onProperty :carries ;
+            owl:someValuesFrom :FreeSpaceOpticalSignal ] ;
+    :definition "A wireless link that transmits optical signals through free space (air, vacuum, or water) without physical waveguides, using lasers or LEDs with focused beams and requiring line-of-sight alignment." .
+
+:FreeSpaceOpticalSignal a owl:Class ;
+    rdfs:label "Free Space Optical Signal" ;
+    rdfs:subClassOf :DigitalArtifact,
+        :OpticalSignal ;
+    rdfs:isDefinedBy <http://dbpedia.org/resource/Free-space_optical_communication> ;
+    :definition "A free space optical (FSO) signal refers to the wireless transmission of data using light beams, typically laser or LED, through the atmosphere or free space. It's a form of optical communication that doesn't rely on physical cables like fiber optics." .
+
+:FrontEndProcessor a owl:Class ;
+    rdfs:label "Front-End Processor (FEP)" ;
+    rdfs:subClassOf :EmbeddedComputer,
+        [ a owl:Restriction ;
+            owl:onProperty :connected-to ;
+            owl:someValuesFrom :OpticalTransmitterSystem ],
+        [ a owl:Restriction ;
+            owl:onProperty :controls ;
+            owl:someValuesFrom :SoftwareDefinedRadio ],
+        [ a owl:Restriction ;
+            owl:onProperty :produces ;
+            owl:someValuesFrom :SpaceProtocolNetworkTraffic ],
+        [ a owl:Restriction ;
+            owl:onProperty :receives ;
+            owl:someValuesFrom :SpaceProtocolNetworkTraffic ] ;
+    rdfs:isDefinedBy <http://dbpedia.org/resource/Front-end_processor> ;
+    :definition "A front-end processor (FEP) is a specialized computer or device that manages communication between a host computer and external networks or peripheral devices." ;
+    rdfs:seeAlso <https://www.kratosdefense.com/products/space/satellites/ttc-devices-and-software/quantumfep> .
 
 :FTPDeleteEvent a owl:Class ;
     rdfs:label "FTP Delete Event" ;
@@ -14891,6 +15037,36 @@ TechVidvan. (n.d.). Clustering in Machine Learning Tutorial. [Link](https://tech
     :definition "A class of neural networks that specializes in processing data that has a grid-like topology, such as an image." ;
     :kb-article """## References
 Talukdar, P. (2020, June 10). Convolutional Neural Networks Explained. Towards Data Science. [Link](https://towardsdatascience.com/convolutional-neural-networks-explained-9cc5188c4939)""" .
+
+:GroundStation a owl:Class ;
+    rdfs:label "Ground Station" ;
+    rdfs:subClassOf :PhysicalArtifact,
+        [ a owl:Restriction ;
+            owl:onProperty :contains ;
+            owl:someValuesFrom :FrontEndProcessor ],
+        [ a owl:Restriction ;
+            owl:onProperty :may-contain ;
+            owl:someValuesFrom :Antenna ],
+        [ a owl:Restriction ;
+            owl:onProperty :may-contain ;
+            owl:someValuesFrom :AntennaController ],
+        [ a owl:Restriction ;
+            owl:onProperty :may-contain ;
+            owl:someValuesFrom :OpticalTelescope ],
+        [ a owl:Restriction ;
+            owl:onProperty :may-contain ;
+            owl:someValuesFrom :OpticalTransmitterSystem ],
+        [ a owl:Restriction ;
+            owl:onProperty :may-contain ;
+            owl:someValuesFrom :SoftwareDefinedRadio ],
+        [ a owl:Restriction ;
+            owl:onProperty :runs ;
+            owl:someValuesFrom :CommandGenerationSoftware ],
+        [ a owl:Restriction ;
+            owl:onProperty :runs ;
+            owl:someValuesFrom :MissionPlanningSoftware ] ;
+    rdfs:isDefinedBy <http://dbpedia.org/resource/Ground_station> ;
+    :definition "A ground station, Earth station, or Earth terminal is a terrestrial station designed for extraplanetary telecommunication with spacecraft (constituting part of the ground segment of the spacecraft system), or reception of transmissions from astronomical sources." .
 
 :Group a owl:Class ;
     rdfs:label "Group" ;
@@ -16026,6 +16202,16 @@ Identification of potential ROP exploit execution includes:
     :kb-article """## References
 Wikipedia. (n.d.). Statistical inference. [Link](https://en.wikipedia.org/wiki/Statistical_inference)""" .
 
+:InfraredLink a owl:Class ;
+    rdfs:label "Infrared Link" ;
+    rdfs:subClassOf :WirelessLink ;
+    :definition "A wireless link using infrared electromagnetic radiation (typically 700 nm to 1 mm wavelength) for short-range communications, common in remote controls and proximity-based data transfer." .
+
+:InfraredSignal a owl:Class ;
+    rdfs:label "Infrared Signal" ;
+    rdfs:subClassOf :OpticalSignal ;
+    :definition "An electromagnetic signal in the infrared spectrum, often used for thermal imaging and remote controls." .
+
 :InitialAccessTechnique a owl:Class ;
     rdfs:label "Initial Access Technique" ;
     rdfs:subClassOf :ATTACKEnterpriseTechnique,
@@ -16889,6 +17075,11 @@ LAN Access Mediation is a network security approach that manages and controls ac
     rdfs:subClassOf :PersonalComputer ;
     rdfs:isDefinedBy <http://dbpedia.org/resource/Laptop> ;
     :definition "A laptop computer (also laptop), is a small, portable personal computer (PC) with a \"clamshell\" form factor, typically having a thin LCD or LED computer screen mounted on the inside of the upper lid of the clamshell and an alphanumeric keyboard on the inside of the lower lid. The clamshell is opened up to use the computer. Laptops are folded shut for transportation, and thus are suitable for mobile use. Its name comes from lap, as it was deemed to be placed on a person's lap when being used. Although originally there was a distinction between laptops and notebooks (the former being bigger and heavier than the latter), as of 2014, there is often no longer any difference. Today, laptops are commonly used in a variety of settings, such as at work, in education, for playing games, web browsing" .
+
+:Laser a owl:Class ;
+    rdfs:label "Laser" ;
+    rdfs:subClassOf :HardwareDevice ;
+    :definition "A laser is a device that emits light through a process of optical amplification based on the stimulated emission of electromagnetic radiation." .
 
 :LateralMovementTechnique a owl:Class ;
     rdfs:label "Lateral Movement Technique" ;
@@ -18051,6 +18242,27 @@ Symmetric encryption uses the same cryptographic key by both the sender and rece
     :definition "An HTML Application (HTA) is a Microsoft Windows program whose source code consists of HTML, Dynamic HTML, and one or more scripting languages supported by Internet Explorer, such as VBScript or JScript." ;
     :synonym "HTA" .
 
+:MicrowaveSignal a owl:Class ;
+    rdfs:label "Microwave Signal" ;
+    rdfs:subClassOf :Signal ;
+    :definition "An electromagnetic signal in the microwave frequency range, used for radar, communication, and cooking." .
+
+:MissionPlan a owl:Class ;
+    rdfs:label "Mission Plan" ;
+    rdfs:subClassOf :DigitalInformationBearer,
+        :Plan ;
+    :definition "A plan or activity that defines what the satellite needs to do and when, at a high conceptual level. It identifies the operational need for a command." .
+
+:MissionPlanningSoftware a owl:Class ;
+    rdfs:label "Mission Planning Software" ;
+    rdfs:subClassOf :Software,
+        [ a owl:Restriction ;
+            owl:onProperty :produces ;
+            owl:someValuesFrom :MissionPlan ] ;
+    :definition "Mission Planning Software is a specialized application suite that enables spacecraft operators to design, schedule, and optimize sequences of activities and commands for satellite missions over time." ;
+    rdfs:seeAlso <https://www.ssc.spaceforce.mil/Newsroom/Article-Display/Article/4105811/the-future-of-space-force-software-acquisitionsa-case-study-in-satellite-commun> ;
+    :synonyms "Mission Control Software" .
+
 :MobilePhone a owl:Class ;
     rdfs:label "Mobile Phone" ;
     skos:altLabel "Cellphone",
@@ -18990,6 +19202,16 @@ Programmatically checking if a pointer is NULL before use.
     :definition "A document file in a format associated with an d3f:OfficeApplication." ;
     rdfs:seeAlso :OfficeApplication .
 
+:OnboardComputer a owl:Class ;
+    rdfs:label "Onboard Computer (OBC)" ;
+    rdfs:subClassOf :OTEmbeddedComputer,
+        [ a owl:Restriction ;
+            owl:onProperty :runs ;
+            owl:someValuesFrom :RealTimeOperatingSystem ] ;
+    rdfs:isDefinedBy <https://www.esa.int/Enabling_Support/Space_Engineering_Technology/Onboard_Computers_and_Data_Handling/Onboard_Computers> ;
+    :definition "A self-contained, embedded computing unit installed within a vehicle or other autonomous platform that executes real-time control, data-handling, and mission-management software. It interfaces directly with the platform's sensors, actuators, and communication links, processes and stores operational data, and issues commands to subsystems, enabling the system to function independently of external computing resources." ;
+    rdfs:seeAlso <https://blog.satsearch.co/2020-03-11-an-overview-of-on-board-computer-obc-systems-available-on-the-global-space-marketplace> .
+
 :One-timePassword a :One-timePassword,
         owl:Class,
         owl:NamedIndividual ;
@@ -19265,6 +19487,46 @@ Operating System Monitoring Techniques have varied implementations including bui
     rdfs:subClassOf :Modem ;
     rdfs:isDefinedBy <http://dbpedia.org/resource/Modem#Optical_modem> ;
     :definition "A modem that connects to a fiber optic network is known as an optical network terminal (ONT) or optical network unit (ONU). These are commonly used in fiber to the home installations, installed inside or outside a house to convert the optical medium to a copper Ethernet interface, after which a router or gateway is often installed to perform authentication, routing, NAT, and other typical consumer internet functions, in addition to \"triple play\" features such as telephony and television service." .
+
+:OpticalModulator a owl:Class ;
+    rdfs:label "Optical Modulator" ;
+    rdfs:subClassOf :DigitalArtifact ;
+    :definition "An optical modulator is a device which is used to modulate a beam of light. The beam may be carried over free space, or propagated through an optical waveguide (optical fibre)." .
+
+:OpticalReceiver a owl:Class ;
+    rdfs:label "Optical Receiver" ;
+    rdfs:subClassOf :DigitalArtifact,
+        [ a owl:Restriction ;
+            owl:onProperty :receives ;
+            owl:someValuesFrom :FreeSpaceOpticalSignal ] ;
+    :definition "An optical receiver converts an optical signal back into electrical form and recovers the data transmitted through the lightwave system. Its main component is a photodetector that converts light into electricity through the photoelectric effect." ;
+    rdfs:seeAlso <https://www.fiberoptics4sale.com/blogs/wave-optics/basic-concepts-of-optical-receivers> .
+
+:OpticalSignal a owl:Class ;
+    rdfs:label "Optical Signal" ;
+    rdfs:subClassOf :Signal ;
+    :definition "A type of electromagnetic signal that propagates as light waves, typically used in fiber optics and free-space communication." .
+
+:OpticalTelescope a owl:Class ;
+    rdfs:label "Optical Telescope" ;
+    rdfs:subClassOf :DigitalArtifact,
+        [ a owl:Restriction ;
+            owl:onProperty :transmits ;
+            owl:someValuesFrom :FreeSpaceOpticalSignal ] ;
+    :definition "An optical telescope gathers and focuses light mainly from the visible part of the electromagnetic spectrum, to create a magnified image for direct visual inspection, to make a photograph, or to collect data through electronic image sensors." .
+
+:OpticalTransmitterSystem a owl:Class ;
+    rdfs:label "Optical Transmitter System" ;
+    rdfs:subClassOf :DigitalArtifact,
+        [ a owl:Restriction ;
+            owl:onProperty :contains ;
+            owl:someValuesFrom :Laser ],
+        [ a owl:Restriction ;
+            owl:onProperty :contains ;
+            owl:someValuesFrom :OpticalModulator ],
+        [ a owl:Restriction ;
+            owl:onProperty :produces ;
+            owl:someValuesFrom :FreeSpaceOpticalSignal ] .
 
 :OrchestrationController a owl:Class ;
     rdfs:label "Orchestration Controller" ;
@@ -22815,6 +23077,12 @@ Additional examples of equipment include couplers, attenuators, power dividers, 
             owl:onProperty :reads ;
             owl:someValuesFrom :MemoryBlock ] .
 
+:RealTimeOperatingSystem a owl:Class ;
+    rdfs:label "Real-Time Operating System" ;
+    rdfs:subClassOf :OperatingSystem ;
+    rdfs:isDefinedBy <http://dbpedia.org/resource/Real-time_operating_system> ;
+    :definition "A real-time operating system (RTOS) is an operating system (OS) for real-time computing applications that processes data and events that have critically defined time constraints." .
+
 :REC-0001 a owl:Class ;
     rdfs:label "Gather Spacecraft Design Information - SPARTA" ;
     skos:prefLabel "Gather Spacecraft Design Information" ;
@@ -23657,6 +23925,14 @@ Queries for reverse resolution requests (that is, requests where IP(s) are sent 
             owl:someValuesFrom :AssignPrivilegesToGroupEvent ] ;
     :definition "An event where specific privileges or rights are removed from a group, restricting its members from performing actions or accessing resources previously allowed by those privileges." .
 
+:RFLink a owl:Class ;
+    rdfs:label "RF Link" ;
+    rdfs:subClassOf :WirelessLink,
+        [ a owl:Restriction ;
+            owl:onProperty :carries ;
+            owl:someValuesFrom :RFSignal ] ;
+    :definition "A wireless link that uses electromagnetic radiation in the radio frequency spectrum (typically 3 kHz to 300 GHz) to transmit information through free space propagation." .
+
 :RFNode a owl:Class ;
     rdfs:label "RF Node" ;
     rdfs:subClassOf :NetworkNode ;
@@ -23664,7 +23940,10 @@ Queries for reverse resolution requests (that is, requests where IP(s) are sent 
 
 :RFReceiver a owl:Class ;
     rdfs:label "RF Receiver" ;
-    rdfs:subClassOf :RFNode ;
+    rdfs:subClassOf :RFNode,
+        [ a owl:Restriction ;
+            owl:onProperty :receives ;
+            owl:someValuesFrom :RFSignal ] ;
     :definition "An RF Receiver captures and processes incoming radio freqency signals." .
 
 :RFShielding a owl:Class,
@@ -23677,6 +23956,11 @@ Queries for reverse resolution requests (that is, requests where IP(s) are sent 
     :kb-reference :Reference-PrivacyAndSecuritySystemsAndMethodsOfUse,
         :Reference-Technical_Specifications_for_Construction_and_Management_of_Sensitive_Compartmented_Information_Facilities .
 
+:RFSignal a owl:Class ;
+    rdfs:label "RF Signal" ;
+    rdfs:subClassOf :Signal ;
+    :definition "An electromagnetic signal in the radio-frequency domain, typically used for communication." .
+
 :RFTransceiver a owl:Class ;
     rdfs:label "RF Transceiver" ;
     rdfs:subClassOf :RFNode ;
@@ -23684,7 +23968,10 @@ Queries for reverse resolution requests (that is, requests where IP(s) are sent 
 
 :RFTransmitter a owl:Class ;
     rdfs:label "RF Transmitter" ;
-    rdfs:subClassOf :RFNode ;
+    rdfs:subClassOf :RFNode,
+        [ a owl:Restriction ;
+            owl:onProperty :produces ;
+            owl:someValuesFrom :RFSignal ] ;
     :definition "An RF Transmitter generates and sends RF signals." .
 
 :ROM a owl:Class ;
@@ -23784,6 +24071,70 @@ Example RPC Protocols:
     :definition "State-action-reward-state-action (SARSA) is an algorithm for learning a Markov decision process policy, used in the reinforcement learning area of machine learning." ;
     :kb-article """## References
 State-action-reward-state-action. Wikipedia.  [Link](https://en.wikipedia.org/wiki/State%E2%80%93action%E2%80%93reward%E2%80%93state%E2%80%93action).""" .
+
+:Satellite a owl:Class ;
+    rdfs:label "Satellite" ;
+    rdfs:subClassOf :Spacecraft,
+        [ a owl:Restriction ;
+            owl:onProperty :produces ;
+            owl:someValuesFrom :SatelliteDownlinkTraffic ],
+        [ a owl:Restriction ;
+            owl:onProperty :receives ;
+            owl:someValuesFrom :SatelliteUplinkTraffic ] ;
+    rdfs:isDefinedBy <http://dbpedia.org/resource/Satellite> ;
+    :definition "A satellite or an artificial satellite is an object, typically a spacecraft, placed into orbit around a celestial body. They have a variety of uses, including communication relay, weather forecasting, navigation (GPS), broadcasting, scientific research, and Earth observation." .
+
+:SatelliteDownlinkTraffic a owl:Class ;
+    rdfs:label "Satellite Downlink Traffic" ;
+    rdfs:subClassOf :OutboundNetworkTraffic,
+        :SpaceProtocolNetworkTraffic,
+        [ a owl:Restriction ;
+            owl:onProperty :contains ;
+            owl:someValuesFrom :Telemetry ] ;
+    :definition "Downlink, or downstream, represents the transmission link from the network or satellite to the end-user or Earth's surface. It encompasses the delivery of signals, data, or information from satellites, spacecraft, or network infrastructure to ground-based terminals or devices." ;
+    rdfs:seeAlso <https://www.simbase.com/iot-glossary-dictionary/downlink> .
+
+:SatelliteOpticalDownlink a owl:Class ;
+    rdfs:label "Satellite Optical Downlink" ;
+    rdfs:subClassOf :SatelliteOpticalLink ;
+    :definition "A satellite optical link that transmits optical signals from satellites to ground stations, benefiting from space-based beam quality but still affected by atmospheric turbulence at the receiver." .
+
+:SatelliteOpticalLink a owl:Class ;
+    rdfs:label "Satellite Optical Link" ;
+    rdfs:subClassOf :FreeSpaceOpticalLink ;
+    :definition "A free space optical link designed for satellite communications." .
+
+:SatelliteOpticalUplink a owl:Class ;
+    rdfs:label "Satellite Optical Uplink" ;
+    rdfs:subClassOf :SatelliteOpticalLink ;
+    :definition "A satellite optical link that transmits optical signals from ground stations to satellites, requiring atmospheric compensation and high-precision beam steering to overcome turbulence effects." .
+
+:SatelliteRFDownlink a owl:Class ;
+    rdfs:label "Satellite RF Downlink" ;
+    rdfs:subClassOf :SatelliteRFLink ;
+    :definition "A satellite RF link that transmits signals from a satellite to ground stations, typically operating at lower frequencies with higher power to overcome space-to-ground path loss." ;
+    rdfs:seeAlso <https://www.simbase.com/iot-glossary-dictionary/downlink> .
+
+:SatelliteRFLink a owl:Class ;
+    rdfs:label "Satellite RF Link" ;
+    rdfs:subClassOf :RFLink ;
+    :definition "A radio frequency link specifically designed for communication between ground stations and satellites or between satellites, operating in allocated frequency bands with consideration for space propagation effects." .
+
+:SatelliteRFUplink a owl:Class ;
+    rdfs:label "Satellite RF Uplink" ;
+    rdfs:subClassOf :RFLink ;
+    :definition "A satellite RF link that transmits signals from a ground station to a satellite, typically operating at higher frequencies than the corresponding downlink to minimize interference and optimize link budget" ;
+    rdfs:seeAlso <https://www.satnow.com/community/what-is-satellite-uplink> .
+
+:SatelliteUplinkTraffic a owl:Class ;
+    rdfs:label "Satellite Uplink Traffic" ;
+    rdfs:subClassOf :InboundNetworkTraffic,
+        :SpaceProtocolNetworkTraffic,
+        [ a owl:Restriction ;
+            owl:onProperty :contains ;
+            owl:someValuesFrom :Telecommand ] ;
+    :definition "Traffic originating from the ground that is sent to a satellite." ;
+    rdfs:seeAlso <https://www.satnow.com/community/what-is-satellite-uplink> .
 
 :SavedInstructionPointer a owl:Class ;
     rdfs:label "Saved Instruction Pointer" ;
@@ -24526,6 +24877,15 @@ Another difference are the capabilities of the mechanism:
     rdfs:seeAlso <http://dbpedia.org/resource/Shortcut_(computing)>,
         <http://dbpedia.org/resource/Symbolic_link#Shortcuts> .
 
+:Signal a owl:Class ;
+    rdfs:label "Signal" ;
+    rdfs:subClassOf :DigitalInformationBearer,
+        [ a owl:Restriction ;
+            owl:onProperty :may-be-contained-by ;
+            owl:someValuesFrom :PhysicalLink ] ;
+    rdfs:isDefinedBy <http://dbpedia.org/resource/Signal> ;
+    :definition "A signal is both the process and the result of transmission of data over some media accomplished by embedding some variation." .
+
 :Simulation a owl:Class ;
     rdfs:label "Simulation" ;
     rdfs:subClassOf :Generation .
@@ -24623,6 +24983,18 @@ Wikipedia. (n.d.). Skewness. [Link](https://en.wikipedia.org/wiki/Skewness)""" .
     :definition "A software artifact server provides access to the software artifacts in a software repository. A software repository, or \"repo\" for short, is a storage location for software packages. Often a table of contents is stored, as well as metadata. Repositories group packages. Sometimes the grouping is for a programming language, such as CPAN for the Perl programming language, sometimes for an entire operating system, sometimes the license of the contents is the criteria. At client side, a package manager helps installing from and updating the repositories." ;
     rdfs:seeAlso <http://dbpedia.org/resource/Artifact_(software_development)>,
         <http://dbpedia.org/resource/Software_repository> .
+
+:SoftwareDefinedRadio a owl:Class ;
+    rdfs:label "Software Defined Radio" ;
+    rdfs:subClassOf :EmbeddedComputer,
+        [ a owl:Restriction ;
+            owl:onProperty :connected-to ;
+            owl:someValuesFrom :FrontEndProcessor ],
+        [ a owl:Restriction ;
+            owl:onProperty :produces ;
+            owl:someValuesFrom :RFSignal ] ;
+    rdfs:isDefinedBy <http://dbpedia.org/resource/Software-defined_radio> ;
+    :definition "Software-defined radio (SDR) is a radio communication system where components that conventionally have been implemented in analog hardware (e.g. mixers, filters, amplifiers, modulators/demodulators, detectors, etc.) are instead implemented by means of software on a computer or embedded system." .
 
 :SoftwareDeploymentTool a owl:Class ;
     rdfs:label "Software Deployment Tool" ;
@@ -24765,6 +25137,26 @@ The goal is for homophones to be encoded to the same representation so that they
     rdfs:label "Source Code Reference" ;
     rdfs:subClassOf :TechniqueReference ;
     :pref-label "Source Code" .
+
+:Spacecraft a owl:Class ;
+    rdfs:label "Spacecraft" ;
+    rdfs:subClassOf :Vehicle,
+        [ a owl:Restriction ;
+            owl:onProperty :contains ;
+            owl:someValuesFrom :OnboardComputer ],
+        [ a owl:Restriction ;
+            owl:onProperty :may-contain ;
+            owl:someValuesFrom :OpticalReceiver ],
+        [ a owl:Restriction ;
+            owl:onProperty :may-contain ;
+            owl:someValuesFrom :RFReceiver ] ;
+    rdfs:isDefinedBy <http://dbpedia.org/resource/Spacecraft> ;
+    :definition "A spacecraft is a vehicle that is designed to fly and operate in outer space. Spacecraft are used for a variety of purposes, including communications, Earth observation, meteorology, navigation, space colonization, planetary exploration, and transportation of humans and cargo." .
+
+:SpaceProtocolNetworkTraffic a owl:Class ;
+    rdfs:label "Space Protocol Network Traffic" ;
+    rdfs:subClassOf :NetworkTraffic ;
+    :definition "Space protocol network traffic is network traffic related associated with spacecraft commanding and telemetry. It uses protocols specifically developed for these applications, such as CCSDS' Space Packet Protocol." .
 
 :SPARTAThing a owl:Class ;
     rdfs:label "SPARTA Thing" ;
@@ -32681,6 +33073,45 @@ Reconnaissance consists of techniques that involve adversaries actively or passi
     :definition "A reference used to develop KB articles." ;
     :pref-label "Technique Reference" .
 
+:Telecommand a owl:Class ;
+    rdfs:label "Telecommand" ;
+    rdfs:subClassOf :RemoteCommand,
+        [ a owl:Restriction ;
+            owl:onProperty :recorded-in ;
+            owl:someValuesFrom :Log ] ;
+    rdfs:isDefinedBy <http://dbpedia.org/resource/Telecommand> ;
+    :definition "A command sent to control a remote system that is not physically connected to the sender, transmitted through a telecommunications channel in any suitable encoding, and carrying enough information for the recipient to interpret and execute the intended action." .
+
+:TelecommandAnalysis a owl:Class ;
+    rdfs:label "Telecommand Analysis" ;
+    rdfs:subClassOf :MessageAnalysis,
+        [ a owl:Restriction ;
+            owl:onProperty :analyzes ;
+            owl:someValuesFrom :Telecommand ] ;
+    :definition "The systematic examination using static inspection, dynamic simulation, protocol decoding, and anomaly-detection techniques of telecommand traffic or individual command objects to assess correctness, safety, compliance, and potential malicious intent before those commands are propagated or executed." .
+
+:TelecommandAuthentication a owl:Class ;
+    rdfs:label "Telecommand Authentication" ;
+    rdfs:subClassOf :MessageAuthentication,
+        [ a owl:Restriction ;
+            owl:onProperty :authenticates ;
+            owl:someValuesFrom :Telecommand ] ;
+    :definition "The application of cryptographic or protocol-level techniques that enable any remotely controlled device, or its control system, to verify, with cryptographic assurance, the origin, integrity, and freshness of every received telecommand before execution, thereby preventing spoofing, injection, replay, or unauthorized modification." .
+
+:TelecommandEncryption a owl:Class ;
+    rdfs:label "Telecommand Encryption" ;
+    rdfs:subClassOf :MessageEncryption,
+        [ a owl:Restriction ;
+            owl:onProperty :encrypts ;
+            owl:someValuesFrom :Telecommand ] ;
+    :definition "The cryptographic transformation of a telecommand's payload, headers, or entire packet into ciphertext such that the command's contents remain unintelligible to any entity that lacks the appropriate decryption key." .
+
+:Telemetry a owl:Class ;
+    rdfs:label "Telemetry" ;
+    rdfs:subClassOf :DigitalInformation ;
+    rdfs:isDefinedBy <http://dbpedia.org/resource/Telemetry> ;
+    :definition "Telemetry is the in situ collection of measurements or other data at remote points and their automatic transmission to receiving equipment (telecommunication) for monitoring." .
+
 :TemporalDifferenceLearning a owl:Class,
         owl:NamedIndividual ;
     rdfs:label "Temporal Difference Learning" ;
@@ -32708,6 +33139,11 @@ Temporal difference learning. Wikipedia.  [Link](https://en.wikipedia.org/wiki/T
             owl:someValuesFrom :Process ] ;
     rdfs:isDefinedBy <http://dbpedia.org/resource/Exit_(system_call)> ;
     :definition "On many computer operating systems, a computer process terminates its execution by making an exit system call. More generally, an exit in a multithreading environment means that a thread of execution has stopped running. For resource management, the operating system reclaims resources (memory, files, etc.) that were used by the process. The process is said to be a dead process after it terminates." .
+
+:TerrestrialOpticalLink a owl:Class ;
+    rdfs:label "Terrestrial Optical Link" ;
+    rdfs:subClassOf :FreeSpaceOpticalLink ;
+    :definition "A free space optical link used for ground-based point-to-point communications, typically spanning distances from hundreds of meters to several kilometers with consideration for atmospheric effects." .
 
 :TertiaryStorage a owl:Class ;
     rdfs:label "Tertiary Storage" ;
@@ -33042,6 +33478,11 @@ Note: This resource should not be considered a definitive or exhaustive coding g
     :definition "Makes the utility inversely proportional to the uncertainty of the model with respect to the sample and will work with any  model provided it can assess its uncertainty of a predection." ;
     :kb-article """## References
 Intro to Active Learning. inovex Blog.  [Link](https://www.inovex.de/de/blog/intro-to-active-learning/).""" .
+
+:UnderwaterOpticalLink a owl:Class ;
+    rdfs:label "Underwater Optical Link" ;
+    rdfs:subClassOf :FreeSpaceOpticalLink ;
+    :definition "A free space optical link operating in underwater environments, using blue-green wavelengths for optimal water transmission and suitable for short-range high-bandwidth underwater communications." .
 
 :UnitTestExecutionTool a owl:Class ;
     rdfs:label "Unit Test Execution Tool" ;
@@ -33618,6 +34059,12 @@ Intro to Active Learning. inovex Blog.  [Link](https://www.inovex.de/de/blog/int
             owl:someValuesFrom :VectorImage ] ;
     :definition "A file that contains graphics data represented by vectors." .
 
+:Vehicle a owl:Class ;
+    rdfs:label "Vehicle" ;
+    rdfs:subClassOf :PhysicalArtifact ;
+    rdfs:isDefinedBy <http://dbpedia.org/resource/Vehicle> ;
+    :definition "A vehicle is a machine designed for self-propulsion, usually to transport people, cargo, or both." .
+
 :Vendor a owl:Class ;
     rdfs:label "Vendor" ;
     rdfs:subClassOf :Provider ;
@@ -33872,6 +34319,11 @@ Wikipedia. (n.d.). Central tendency. [Link](https://en.wikipedia.org/wiki/Centra
     rdfs:subClassOf :Network ;
     rdfs:isDefinedBy <http://dbpedia.org/resource/Local_area_network> ;
     :definition "By contrast to a local area network (LAN), a wide area network (WAN), not only covers a larger geographic distance, but also generally involves leased telecommunication circuits or Internet links." .
+
+:WifiLink a owl:Class ;
+    rdfs:label "Wifi Link" ;
+    rdfs:subClassOf :RFLink ;
+    :definition "A radio frequency link implementing IEEE 802.11 standards for local area wireless networking, typically operating in unlicensed frequency bands (2.4 GHz, 5 GHz, 6 GHz)." .
 
 :WindowOpenFile a owl:Class ;
     rdfs:label "Windows OpenFile" ;
@@ -34438,6 +34890,11 @@ Wikipedia. (n.d.). Central tendency. [Link](https://en.wikipedia.org/wiki/Centra
     rdfs:isDefinedBy <https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-writeprocessmemory> ;
     :definition "Writes data to an area of memory in a specified process. The entire area to be written to must be accessible or the operation fails." .
 
+:WiredLink a owl:Class ;
+    rdfs:label "Wired Link" ;
+    rdfs:subClassOf :PhysicalLink ;
+    :definition "A physical link that uses a physical conductor or waveguide to constrain and direct signal propagation between endpoints. The signal is confined within or along a manufactured medium such as metal conductors, optical fibers, or coaxial structures." .
+
 :WirelessAccessPoint a owl:Class ;
     rdfs:label "Wireless Access Point" ;
     skos:altLabel "WAP" ;
@@ -34461,6 +34918,11 @@ Wikipedia. (n.d.). Central tendency. [Link](https://en.wikipedia.org/wiki/Centra
             owl:onProperty :accesses ;
             owl:someValuesFrom :WirelessRouter ] ;
     :definition "An attacker who targets wireless communication methods, like Wi-Fi, without needing physical access to the premises." .
+
+:WirelessLink a owl:Class ;
+    rdfs:label "Wireless Link" ;
+    rdfs:subClassOf :PhysicalLink ;
+    :definition "A physical link that transmits signals through free space or an unguided medium without physical connectors between endpoints. The signal propagates through air, vacuum, water, or other natural media using electromagnetic waves or acoustic energy." .
 
 :WirelessRouter a owl:Class ;
     rdfs:label "Wireless Router" ;
