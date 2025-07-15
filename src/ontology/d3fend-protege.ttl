@@ -33078,6 +33078,7 @@ Reconnaissance consists of techniques that involve adversaries actively or passi
             owl:onProperty :recorded-in ;
             owl:someValuesFrom :Log ] ;
     rdfs:isDefinedBy <http://dbpedia.org/resource/Telecommand> ;
+    :d3fend-id "D3-TCA" ;
     :definition "A command sent to control a remote system that is not physically connected to the sender, transmitted through a telecommunications channel in any suitable encoding, and carrying enough information for the recipient to interpret and execute the intended action." .
 
 :TelecommandAnalysis a owl:Class ;
@@ -33094,6 +33095,7 @@ Reconnaissance consists of techniques that involve adversaries actively or passi
         [ a owl:Restriction ;
             owl:onProperty :authenticates ;
             owl:someValuesFrom :Telecommand ] ;
+    :d3fend-id "D3-TCAN" ;
     :definition "The application of cryptographic or protocol-level techniques that enable any remotely controlled device, or its control system, to verify, with cryptographic assurance, the origin, integrity, and freshness of every received telecommand before execution, thereby preventing spoofing, injection, replay, or unauthorized modification." .
 
 :TelecommandEncryption a owl:Class ;
@@ -33102,6 +33104,7 @@ Reconnaissance consists of techniques that involve adversaries actively or passi
         [ a owl:Restriction ;
             owl:onProperty :encrypts ;
             owl:someValuesFrom :Telecommand ] ;
+    :d3fend-id "D3-TCECR" ;
     :definition "The cryptographic transformation of a telecommand's payload, headers, or entire packet into ciphertext such that the command's contents remain unintelligible to any entity that lacks the appropriate decryption key." .
 
 :Telemetry a owl:Class ;
