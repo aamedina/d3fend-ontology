@@ -25181,6 +25181,16 @@ The goal is for homophones to be encoded to the same representation so that they
     :kb-article """## References
 Towards Data Science. (n.d.). Spectral Clustering. [Link](https://towardsdatascience.com/spectral-clustering-aba2640c0d5b)""" .
 
+:SpreadSpectrum a owl:Class ;
+    rdfs:label "Spread Spectrum Modulation" ;
+    rdfs:subClassOf :MessageHardening,
+        [ a owl:Restriction ;
+            owl:onProperty :hardens ;
+            owl:someValuesFrom :RFSignal ] ;
+    rdfs:isDefinedBy <http://dbpedia.org/resource/Spread_spectrum> ;
+    :d3fend-id "D3-SSM" ;
+    :definition "In telecommunications, especially radio communication, spread spectrum are techniques by which a signal (e.g., an electrical, electromagnetic, or acoustic) generated with a particular bandwidth is deliberately spread in the frequency domain over a wider frequency band." .
+
 :SSHConnectionCloseEvent a owl:Class ;
     rdfs:label "SSH Connection Close Event" ;
     rdfs:subClassOf :NetworkConnectionCloseEvent,
