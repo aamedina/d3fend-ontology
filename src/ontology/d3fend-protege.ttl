@@ -25693,50 +25693,17 @@ Valid Commanding Periods: This information can provide insight into when a comma
                           rdfs:label "Satellite Downlink Traffic" ;
                           rdfs:seeAlso <https://www.simbase.com/iot-glossary-dictionary/downlink> .
 
-
-###  http://d3fend.mitre.org/ontologies/d3fend.owl#SatelliteOpticalDownlink
-:SatelliteOpticalDownlink rdf:type owl:Class ;
-                          rdfs:subClassOf :SatelliteOpticalLink ;
-                          :definition "A satellite optical link that transmits optical signals from satellites to ground stations, benefiting from space-based beam quality but still affected by atmospheric turbulence at the receiver." ;
-                          rdfs:label "Satellite Optical Downlink" .
-
-
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#SatelliteOpticalLink
 :SatelliteOpticalLink rdf:type owl:Class ;
                       rdfs:subClassOf :FreeSpaceOpticalLink ;
                       :definition "A free space optical link designed for satellite communications." ;
                       rdfs:label "Satellite Optical Link" .
 
-
-###  http://d3fend.mitre.org/ontologies/d3fend.owl#SatelliteOpticalUplink
-:SatelliteOpticalUplink rdf:type owl:Class ;
-                        rdfs:subClassOf :SatelliteOpticalLink ;
-                        :definition "A satellite optical link that transmits optical signals from ground stations to satellites, requiring atmospheric compensation and high-precision beam steering to overcome turbulence effects." ;
-                        rdfs:label "Satellite Optical Uplink" .
-
-
-###  http://d3fend.mitre.org/ontologies/d3fend.owl#SatelliteRFDownlink
-:SatelliteRFDownlink rdf:type owl:Class ;
-                     rdfs:subClassOf :SatelliteRFLink ;
-                     :definition "A satellite RF link that transmits signals from a satellite to ground stations, typically operating at lower frequencies with higher power to overcome space-to-ground path loss." ;
-                     rdfs:label "Satellite RF Downlink" ;
-                     rdfs:seeAlso <https://www.simbase.com/iot-glossary-dictionary/downlink> .
-
-
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#SatelliteRFLink
 :SatelliteRFLink rdf:type owl:Class ;
                  rdfs:subClassOf :RFLink ;
                  :definition "A radio frequency link specifically designed for communication between ground stations and satellites or between satellites, operating in allocated frequency bands with consideration for space propagation effects." ;
                  rdfs:label "Satellite RF Link" .
-
-
-###  http://d3fend.mitre.org/ontologies/d3fend.owl#SatelliteRFUplink
-:SatelliteRFUplink rdf:type owl:Class ;
-                   rdfs:subClassOf :RFLink ;
-                   :definition "A satellite RF link that transmits signals from a ground station to a satellite, typically operating at higher frequencies than the corresponding downlink to minimize interference and optimize link budget" ;
-                   rdfs:label "Satellite RF Uplink" ;
-                   rdfs:seeAlso <https://www.satnow.com/community/what-is-satellite-uplink> .
-
 
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#SatelliteUplinkTraffic
 :SatelliteUplinkTraffic rdf:type owl:Class ;
