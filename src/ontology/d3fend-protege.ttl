@@ -2525,7 +2525,7 @@ Moving forward different distinctions of kinds of has-part (contains) relationsh
 
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#AcousticSignal
 :AcousticSignal rdf:type owl:Class ;
-                rdfs:subClassOf :PhysicalSignal ;
+                rdfs:subClassOf :MechanicalSignal ;
                 :definition "A signal that propagates through mechanical vibrations in a medium, such as air, water, or solid materials." ;
                 rdfs:label "Acoustic Signal" .
 
@@ -19355,6 +19355,14 @@ Many operating systems, software frameworks and programs include a logging syste
                        rdfs:subClassOf :AverageAbsoluteDeviation .
 
 
+###  http://d3fend.mitre.org/ontologies/d3fend.owl#MechanicalSignal
+:MechanicalSignal rdf:type owl:Class ;
+                  rdfs:subClassOf :PhysicalSignal ;
+                  :definition "A physical signal that requires a physical medium for propagation and involves the transfer of energy through the oscillation of particles in the medium." ;
+                  rdfs:label "Mechanical Signal" ;
+                  rdfs:seeAlso "https://dbpedia.org/resource/Mechanical_wave" .
+
+
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#MediaGeneration
 :MediaGeneration rdf:type owl:Class ;
                  rdfs:subClassOf :Generation ;
@@ -23584,7 +23592,7 @@ NOTE: not synonymous with data link as a data link can be over a telecommunicati
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#PhysicalSignal
 :PhysicalSignal rdf:type owl:Class ;
                 rdfs:subClassOf :Signal ;
-                :definition "A PhysicalSignal is a subclass of Signal that is realized as a physical phenomenon in the real world. It involves the transmission of information through a physical medium or via physical processes, such as electromagnetic waves, sound waves, or mechanical vibrations." ;
+                :definition "A physical signal is a subclass of Signal that is realized as a physical phenomenon in the real world. It involves the transmission of information through a physical medium or via physical processes, such as electromagnetic waves, sound waves, or mechanical vibrations." ;
                 rdfs:isDefinedBy "http://dbpedia.org/resource/Signal" ;
                 rdfs:label "Physical Signal" .
 
@@ -25693,17 +25701,6 @@ Valid Commanding Periods: This information can provide insight into when a comma
                           rdfs:label "Satellite Downlink Traffic" ;
                           rdfs:seeAlso <https://www.simbase.com/iot-glossary-dictionary/downlink> .
 
-###  http://d3fend.mitre.org/ontologies/d3fend.owl#SatelliteOpticalLink
-:SatelliteOpticalLink rdf:type owl:Class ;
-                      rdfs:subClassOf :FreeSpaceOpticalLink ;
-                      :definition "A free space optical link designed for satellite communications." ;
-                      rdfs:label "Satellite Optical Link" .
-
-###  http://d3fend.mitre.org/ontologies/d3fend.owl#SatelliteRFLink
-:SatelliteRFLink rdf:type owl:Class ;
-                 rdfs:subClassOf :RFLink ;
-                 :definition "A radio frequency link specifically designed for communication between ground stations and satellites or between satellites, operating in allocated frequency bands with consideration for space propagation effects." ;
-                 rdfs:label "Satellite RF Link" .
 
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#SatelliteUplinkTraffic
 :SatelliteUplinkTraffic rdf:type owl:Class ;
@@ -36439,13 +36436,6 @@ Reconnaissance consists of techniques that involve adversaries actively or passi
                   rdfs:label "Terminate Process" .
 
 
-###  http://d3fend.mitre.org/ontologies/d3fend.owl#TerrestrialOpticalLink
-:TerrestrialOpticalLink rdf:type owl:Class ;
-                        rdfs:subClassOf :FreeSpaceOpticalLink ;
-                        :definition "A free space optical link used for ground-based point-to-point communications, typically spanning distances from hundreds of meters to several kilometers with consideration for atmospheric effects." ;
-                        rdfs:label "Terrestrial Optical Link" .
-
-
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#TertiaryStorage
 :TertiaryStorage rdf:type owl:Class ;
                  rdfs:subClassOf :HardwareDevice ,
@@ -36739,13 +36729,6 @@ Reconnaissance consists of techniques that involve adversaries actively or passi
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#UncertaintySampling
 :UncertaintySampling rdf:type owl:Class ;
                      rdfs:subClassOf :ActiveLearning .
-
-
-###  http://d3fend.mitre.org/ontologies/d3fend.owl#UnderwaterOpticalLink
-:UnderwaterOpticalLink rdf:type owl:Class ;
-                       rdfs:subClassOf :FreeSpaceOpticalLink ;
-                       :definition "A free space optical link operating in underwater environments, using blue-green wavelengths for optimal water transmission and suitable for short-range high-bandwidth underwater communications." ;
-                       rdfs:label "Underwater Optical Link" .
 
 
 ###  http://d3fend.mitre.org/ontologies/d3fend.owl#UnitTestExecutionTool
@@ -48003,25 +47986,25 @@ Wikipedia. (n.d.). Artificial neural network. [Link](https://en.wikipedia.org/wi
                      :definition "Combines the principles of Artificial Neural Networks (ANN) and clustering methods." .
 
 
-:ARIMAModel :definition "An autoregressive integrated moving average (ARIMA) model is a generalization of an autoregressive moving average (ARMA) model." ;
-            :kb-article """## References
+:ARIMAModel :kb-article """## References
 Wikipedia. (n.d.). Autoregressive integrated moving average. [Link](https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average)""" ;
+            :definition "An autoregressive integrated moving average (ARIMA) model is a generalization of an autoregressive moving average (ARMA) model." ;
             :synonym "Autoregressive Integrated Moving Average Model" ;
             rdfs:label "ARIMA Model" .
 
 
-:ARMA_Model :kb-article """## References
+:ARMA_Model :definition "Autoregressive-moving-average (ARMA) models provide a parsimonious description of a (weakly) stationary stochastic process in terms of two polynomials, one for the autoregression (AR) and the second for the moving average (MA)." ;
+            :kb-article """## References
 Wikipedia. (n.d.). Autoregressive-moving-average model. [Link](https://en.wikipedia.org/wiki/Autoregressive%E2%80%93moving-average_model)""" ;
-            :definition "Autoregressive-moving-average (ARMA) models provide a parsimonious description of a (weakly) stationary stochastic process in terms of two polynomials, one for the autoregression (AR) and the second for the moving average (MA)." ;
-            rdfs:label "ARMA Model" ;
-            :synonym "Autoregressive moving average model" .
+            :synonym "Autoregressive moving average model" ;
+            rdfs:label "ARMA Model" .
 
 
-:AccessMediation rdfs:seeAlso <http://dbpedia.org/resource/Access_control> ,
-                              <https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.201-2.pdf> ,
-                              <https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1451869> ;
+:AccessMediation rdfs:seeAlso <https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.201-2.pdf> ,
+                              <http://dbpedia.org/resource/Access_control> ,
+                              <https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1451869> ,
+                              <https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-160v1r1.pdf> ;
                  rdfs:label "Access Mediation" ;
-                 rdfs:seeAlso <https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-160v1r1.pdf> ;
                  :synonym "Access Control" ;
                  rdfs:seeAlso <https://www.cs.cmu.edu/afs/cs/usr/bsy/security/CSC-STD-001-83.txt> ;
                  :definition "Access mediation is the process of granting or denying specific requests to: 1) obtain and use information and related information processing services; and 2) enter specific physical facilities (e.g., Federal buildings, military establishments, border crossing entrances). Access mediation decisions should enforce least privilege by granting access for scoped durations to prevent privilege creep and, where applicable, implement just-in-time (JIT) access. Denial decisions may prevent initial access or terminate access that has already been granted, ensuring continuous enforcement of security policies." .
@@ -48110,8 +48093,8 @@ Another means of establishing network connectivity is by means of sendingn traff
                           :definition "Active logical link mapping sends and receives network traffic as a means to map the whole data link layer, where the links represent logical data flows rather than physical connection" .
 
 
-:ActivePhysicalLinkMapping :synonym "Active Physical Layer Mapping" ;
-                           :definition "Active physical link mapping sends and receives network traffic as a means to map the physical layer." ;
+:ActivePhysicalLinkMapping :definition "Active physical link mapping sends and receives network traffic as a means to map the physical layer." ;
+                           :synonym "Active Physical Layer Mapping" ;
                            rdfs:label "Active Physical Link Mapping" .
 
 
@@ -48224,6 +48207,7 @@ Agglomerative clustering starts with each data point as its own cluster. The alg
 
 
 :AnswerSetProgramming rdfs:label "Answer Set Programming" ;
+                      :definition "Answer set programming is a form of declarative programming based on the stable model (answer set) semantics of logic programming." ;
                       :kb-article """## How it works
 Answer set programming (ASP) is oriented towards difficult (primarily NP-hard) search problems. The computational process employed in the design of many answer set solvers is an enhancement of the DPLL algorithm and, in principle, it always terminates (unlike Prolog query evaluation, which may lead to an infinite loop).
 
@@ -48231,7 +48215,6 @@ In a more general sense, ASP includes all applications of answer sets to knowled
 
 ## References
 1. Answer set programming. (2023, April 27). In _Wikipedia_. [Link](https://en.wikipedia.org/wiki/Answer_set_programming)""" ;
-                      :definition "Answer set programming is a form of declarative programming based on the stable model (answer set) semantics of logic programming." ;
                       :synonym "ASP" .
 
 
@@ -48255,10 +48238,10 @@ The following aspects help make browser-based process isolation possible:
 -  Application-based Process Isolation may increase memory footprint.
 -  Application-based Process Isolation may decrease application performance.""" ;
                                    rdfs:label "Application-based Process Isolation" ;
-                                   :synonym "Browser-based Process Isolation" ,
-                                            "Remote Browser Isolation" ;
+                                   :synonym "Browser-based Process Isolation" ;
                                    :definition "Application code which prevents its own subroutines from accessing intra-process / internal memory space." ;
-                                   :synonym "Sandbox" .
+                                   :synonym "Remote Browser Isolation" ,
+                                            "Sandbox" .
 
 
 :ApplicationConfigurationHardening :kb-article """## How it works
@@ -48416,8 +48399,8 @@ Baig, S. A., PhD. (2020). Bayesian Inference: An Introduction to Hypothesis Test
                            rdfs:label "Bayesian Hypothesis Testing" .
 
 
-:BayesianLinearRegression :definition "Bayesian linear regression is a type of conditional modeling in which the mean of one variable is described by a linear combination of other variables, with the goal of obtaining the posterior probability of the regression coefficients." ;
-                          rdfs:label "Bayesian Linear Regression" ;
+:BayesianLinearRegression rdfs:label "Bayesian Linear Regression" ;
+                          :definition "Bayesian linear regression is a type of conditional modeling in which the mean of one variable is described by a linear combination of other variables, with the goal of obtaining the posterior probability of the regression coefficients." ;
                           :kb-article """## References
 Wikipedia. (n.d.). Bayesian linear regression. [Link](https://en.wikipedia.org/wiki/Bayesian_linear_regression)""" .
 
@@ -48494,9 +48477,9 @@ Sciencedirect. (n.d.). Semi-supervised learning: An overview. [Link](https://www
 
 
 :BootstrapAggregating rdfs:label "Bootstrap Aggregating" ;
+                      :definition "Bootstrap aggregating, also called bagging (from bootstrap aggregating), is a machine learning ensemble meta-algorithm designed to improve the stability and accuracy of machine learning algorithms used in statistical classification and regression. It also reduces variance and helps to avoid overfitting. Although it is usually applied to decision tree methods, it can be used with any type of method. Bagging is a special case of the model averaging approach." ;
                       :kb-article """## References
-Bootstrap aggregating. Wikipedia.  [Link](https://en.wikipedia.org/wiki/Bootstrap_aggregating).""" ;
-                      :definition "Bootstrap aggregating, also called bagging (from bootstrap aggregating), is a machine learning ensemble meta-algorithm designed to improve the stability and accuracy of machine learning algorithms used in statistical classification and regression. It also reduces variance and helps to avoid overfitting. Although it is usually applied to decision tree methods, it can be used with any type of method. Bagging is a special case of the model averaging approach." .
+Bootstrap aggregating. Wikipedia.  [Link](https://en.wikipedia.org/wiki/Bootstrap_aggregating).""" .
 
 
 :BroadcastDomainIsolation :synonym "Network Segmentation" ;
@@ -48519,6 +48502,7 @@ Ensemble learning. Wikipedia.  [Link](https://en.wikipedia.org/wiki/Ensemble_lea
 
 :ByteSequenceEmulation rdfs:label "Byte Sequence Emulation" ;
                        :definition "Analyzing sequences of bytes and determining if they likely represent malicious shellcode." ;
+                       :synonym "Shellcode Transmission Detection" ;
                        :kb-article """## How it works
 
 Bytes are analyzed as if they are machine code instructions, and such instructions that are a common component of known shellcode are noted, such as stack pivots, reads from a Memory Address Table, and system calls for functions that disable protections or execute code.  For example, the x86 instruction `b0 0b: mov $11, %ax`, with no further alterations to the `%ax` register, followed by `cd 80: syscall` executes the system call `execve()` in the Linux kernel, which replaces the current process with another one specified -- this is a common action in shellcode, so this sequence would be flagged.
@@ -48544,8 +48528,7 @@ With inserting code directly, that it is not a buffer overflow, and just some pl
 
 ### False Positives
 
-Byte sequences containing code that is never used as machine code are still analyzed and flagged for anomalies, and [eventually](http://mathforum.org/library/drmath/view/55871.html), it is likely that an attack sequence will arise from the sheer volume of bytes transmitted.""" ;
-                       :synonym "Shellcode Transmission Detection" .
+Byte sequences containing code that is never used as machine code are still analyzed and flagged for anomalies, and [eventually](http://mathforum.org/library/drmath/view/55871.html), it is likely that an attack sequence will arise from the sheer volume of bytes transmitted.""" .
 
 
 :C4.5 rdfs:label "C4.5" ;
@@ -48831,8 +48814,8 @@ Cluster analysis. (n.d.). Wikipedia. [Link](https://en.wikipedia.org/wiki/Cluste
 
 :CodeAnalyzer rdfs:seeAlso <http://dbpedia.org/resource/Program_analysis> ;
               :todo "Damn these wikipedia articles are present, but not that great; riffing and borrowing parts, not exact defs." ;
-              :definition "Code analyzers automatically analyze the composition or behavior of computer programs regarding a property such as correctness, robustness, security, and safety. Program analysis can be performed without executing the program (static program analysis), during runtime (dynamic program analysis) or in a combination of both." ;
               skos:altLabel "Program Analysis Tool" ;
+              :definition "Code analyzers automatically analyze the composition or behavior of computer programs regarding a property such as correctness, robustness, security, and safety. Program analysis can be performed without executing the program (static program analysis), during runtime (dynamic program analysis) or in a combination of both." ;
               rdfs:label "Code Analyzer" .
 
 
@@ -48862,7 +48845,8 @@ A connected honeynet provides a tradeoff between emulating certain functionality
                    rdfs:label "Connected Honeynet" .
 
 
-:ConnectionAttemptAnalysis :kb-article """## How it works
+:ConnectionAttemptAnalysis rdfs:label "Connection Attempt Analysis" ;
+                           :kb-article """## How it works
 Connection Attempt Analysis in multiple ways.
 
 ### Monitoring traffic to unallocated IP space
@@ -48876,7 +48860,6 @@ Another approach passively inspects network traffic with application protocol an
 * Implementations that rely on analysis of unallocated IP address space increase in their complexity with network size and decentralized network infrastructure.
 * Inventory of unallocated IP space should should be continuously updated to mitigate the risk of false positives.
 * IPv6 also introduces challenges including IPv6 traffic bypassing IPv4 specific protection systems (ex. firewalls and IDS) and complexity in managing both IPv6 and IPv4 addresses.""" ;
-                           rdfs:label "Connection Attempt Analysis" ;
                            :synonym "Network Scan Detection" ;
                            :definition "Analyzing failed connections in a network to detect unauthorized activity." .
 
@@ -48976,9 +48959,9 @@ To ensure that content is safe, it's composition must be validated according to 
 
 
 :ConvolutionalNeuralNetwork rdfs:label "Convolutional Neural Network" ;
-                            :definition "A class of artificial neural network most commonly applied to analyze visual imagery.CNNs use a mathematical operation called convolution in place of general matrix multiplication in at least one of their layers." ;
                             :kb-article """## References
-Wikipedia. (n.d.). Convolutional neural network. [Link](https://en.wikipedia.org/wiki/Convolutional_neural_network)""" .
+Wikipedia. (n.d.). Convolutional neural network. [Link](https://en.wikipedia.org/wiki/Convolutional_neural_network)""" ;
+                            :definition "A class of artificial neural network most commonly applied to analyze visual imagery.CNNs use a mathematical operation called convolution in place of general matrix multiplication in at least one of their layers." .
 
 
 :CopyToken rdfs:label "Copy Token" .
@@ -49051,8 +49034,8 @@ Management servers with enterprise policies for account management provide the a
 
 
 :CredentialRotation :definition "Credential rotation is a security procedure in which authentication credentials, such as passwords, API keys, or certificates, are regularly changed or replaced to minimize the risk of unauthorized access." ;
-                    rdfs:seeAlso <https://www.ituonline.com/tech-definitions/what-is-credential-rotation/> ;
                     rdfs:label "Credential Rotation" ;
+                    rdfs:seeAlso <https://www.ituonline.com/tech-definitions/what-is-credential-rotation/> ;
                     :kb-article """## How it works
 
 Credentials can be systematically changed at predetermined intervals or based on specific events.  Credentials such as user passwords may be rotated manually, but it is increasingly common to use an automated system to manage rotation of enterprise passwords, certificates and keys.
@@ -49137,8 +49120,8 @@ For example, a DNS policy can be created for blocking DNS queries for FQDNs that
 - Continuous maintenance of unauthorized domain lists is needed to keep up to date with possible site content changes.
 - File sharing or content delivery networks may require other filtering techniques that are more fine-grained (URL blocking).
 - Access to malicious websites or other network resources directly by IP instead of by DNS record, or after alteration of local DNS hosts file, may not result in DNS network traffic.""" ;
-                :synonym "DNS Blacklisting" ;
-                :definition "Blocking DNS Network Traffic based on criteria such as IP address, domain name, or DNS query type." .
+                :definition "Blocking DNS Network Traffic based on criteria such as IP address, domain name, or DNS query type." ;
+                :synonym "DNS Blacklisting" .
 
 
 :DNSTrafficAnalysis :definition "Analysis of domain name metadata, including name and DNS records, to determine whether the domain is likely to resolve to an undesirable host." ;
@@ -49160,9 +49143,9 @@ This technique does not check for content hosted at the domain.
 
 
 :DataExchangeMapping :synonym "Data Flow Mapping" ;
-                     :definition "Data exchange mapping identifies and models the organization's intended design for the flows of the data types, formats, and volumes between systems at the application layer." ;
                      rdfs:label "Data Exchange Mapping" ;
-                     :synonym "Information Exchange Mapping" .
+                     :synonym "Information Exchange Mapping" ;
+                     :definition "Data exchange mapping identifies and models the organization's intended design for the flows of the data types, formats, and volumes between systems at the application layer." .
 
 
 :DataInventory :synonym "Data Discovery" ,
@@ -49474,14 +49457,14 @@ Deep learning. Wikipedia. [Link](https://en.wikipedia.org/wiki/Deep_learning).""
 
 
 :DeepQ-learning rdfs:label "Deep Q-learning" ;
-                :definition "Uses a deep convolutional neural network, with layers of tiled convolutional filters to mimic the effects of receptive fields." ;
                 :kb-article """## References
-Q-learning. Wikipedia.  [Link](https://en.wikipedia.org/wiki/Q-learning#Deep_Q-learning).""" .
+Q-learning. Wikipedia.  [Link](https://en.wikipedia.org/wiki/Q-learning#Deep_Q-learning).""" ;
+                :definition "Uses a deep convolutional neural network, with layers of tiled convolutional filters to mimic the effects of receptive fields." .
 
 
-:DefensiveTechnique :display-baseurl "/technique/" ;
-                    :synonym "Technical Security Control" ,
-                             "Defensive Capability Feature" ;
+:DefensiveTechnique :synonym "Technical Security Control" ;
+                    :display-baseurl "/technique/" ;
+                    :synonym "Defensive Capability Feature" ;
                     :definition "A method which makes a computer system more difficult to attack." ;
                     rdfs:label "Defensive Technique" ;
                     :synonym "Countermeasure Technique" ;
@@ -49494,9 +49477,9 @@ Q-learning. Wikipedia.  [Link](https://en.wikipedia.org/wiki/Q-learning#Deep_Q-l
 Google Developers. (n.d.). Clustering algorithms. [Link](https://developers.google.com/machine-learning/clustering/clustering-algorithms)""" .
 
 
-:Density-weightedMethod :definition "An Actvie Learning technique that uses a density estimate meta-parameter to avoid sampling sparsely populated regions of the feature space and can be based parametrically or from a parameter free model." ;
-                        :kb-article """## References
+:Density-weightedMethod :kb-article """## References
 Intro to Active Learning. inovex Blog. [Link](https://www.inovex.de/de/blog/intro-to-active-learning/).""" ;
+                        :definition "An Actvie Learning technique that uses a density estimate meta-parameter to avoid sampling sparsely populated regions of the feature space and can be based parametrically or from a parameter free model." ;
                         rdfs:label "Density-weighted Method" .
 
 
@@ -49524,8 +49507,8 @@ Wikipedia. (n.d.). Descriptive statistics. [Link](https://en.wikipedia.org/wiki/
 
 
 :Detect :definition "The detect tactic is used to identify adversary access to or unauthorized activity on computer networks." ;
-        rdfs:label "Detect" ;
         :display-order 1 ;
+        rdfs:label "Detect" ;
         :display-priority 0 .
 
 
@@ -49726,7 +49709,6 @@ Endpoint-based Web Server Access Mediation focuses on managing access to web ser
 
 :EndpointHealthBeacon :definition "Monitoring the security status of an endpoint by sending periodic messages with health status, where absence of a response may indicate that the endpoint has been compromised." ;
                       :synonym "Endpoint Health Telemetry" ;
-                      rdfs:label "Endpoint Health Beacon" ;
                       :kb-article """## How it works
 Endpoints are configured to periodically generate and transmit a secure heartbeat that is delivered on a configured schedule and provides endpoint status information. Status information can include software details (version, configuration, etc), endpoint identification (MAC, IP address, machine ID) or other hardware/software configuration information. Interruption of the heartbeat can signal that the endpoint has been compromised.
 
@@ -49734,7 +49716,8 @@ Endpoints are configured to periodically generate and transmit a secure heartbea
 * Security of heartbeat messages to ensure message integrity
 * Disappearance of the heartbeat could simply mean that the endpoint is powered off or intentionally disconnected from the network. Therefore other criteria may need to be used to accurately detect endpoint compromise.
 * Attacker presence on the machine may leave the heartbeat intact.
-* An attacker may determine the format of the heartbeat and continue to send it even after the machine is compromised.""" .
+* An attacker may determine the format of the heartbeat and continue to send it even after the machine is compromised.""" ;
+                      rdfs:label "Endpoint Health Beacon" .
 
 
 :EnsembleLearning rdfs:label "Ensemble Learning" ;
@@ -49784,9 +49767,9 @@ Pennsylvania State University. (n.d.). Statistical Inference and Estimation. [Li
 
 :ExactMatching rdfs:label "Exact Matching" ;
                :definition "Exact matching for numeric types is just the simple test for mathematical equivalence of the values being matched." ;
+               :synonym "Numeric Equivalence Matching" ;
                :kb-article """## References
-1. Equality (mathematics). (2023, May 31). In _Wikipedia_. [Link](https://en.wikipedia.org/wiki/Equality_(mathematics)]""" ;
-               :synonym "Numeric Equivalence Matching" .
+1. Equality (mathematics). (2023, May 31). In _Wikipedia_. [Link](https://en.wikipedia.org/wiki/Equality_(mathematics)]""" .
 
 
 :ExceptionHandlerPointerValidation rdfs:label "Exception Handler Pointer Validation" ;
@@ -49819,8 +49802,8 @@ SafeSEH might be applied only to some executable files or modules, allowing an a
 
 
 :ExecutableAllowlisting rdfs:label "Executable Allowlisting" ;
-                        :definition "Using a digital signature to authenticate a file before opening." ;
                         :synonym "File Signature Authentication" ;
+                        :definition "Using a digital signature to authenticate a file before opening." ;
                         :kb-article """## How it works
 
 This technique is generic and there are numerous ways to compute and authenticate digital signatures.
@@ -49912,9 +49895,9 @@ Certain file access actions may not be statistically different from authorized a
 
 
 :FileAnalysis rdfs:label "File Analysis" ;
+              :definition "File Analysis is an analytic process to determine a file's status. For example: virus, trojan, benign, malicious, trusted, unauthorized, sensitive, etc." ;
               :kb-article """## Technique Overview
-Some techniques use file signatures or file metadata to compare against historical collections of malware. Files may also be compared against a source of ground truth such as cryptographic signatures. Examining files for potential malware using pattern matching against file contents/file behavior. Binary code may be dissembled and analyzed for predictive malware behavior, such as API call signatures. Analysis might occur within a protected environment such as a sandbox or live system.""" ;
-              :definition "File Analysis is an analytic process to determine a file's status. For example: virus, trojan, benign, malicious, trusted, unauthorized, sensitive, etc." .
+Some techniques use file signatures or file metadata to compare against historical collections of malware. Files may also be compared against a source of ground truth such as cryptographic signatures. Examining files for potential malware using pattern matching against file contents/file behavior. Binary code may be dissembled and analyzed for predictive malware behavior, such as API call signatures. Analysis might occur within a protected environment such as a sandbox or live system.""" .
 
 
 :FileCarving rdfs:label "File Carving" ;
@@ -50065,11 +50048,12 @@ File format specifications often define expected values for specific fields. A c
 
 :Firewall rdfs:seeAlso <http://dbpedia.org/resource/Firewall_(computing)> ;
           :definition "In computing, a firewall is a network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. A firewall typically establishes a barrier between a trusted internal network and untrusted external network, such as the Internet. Firewalls are often categorized as either network firewalls or host-based firewalls. Network firewalls filter traffic between two or more networks and run on network hardware. Host-based firewalls run on host computers and control network traffic in and out of those machines. This definition refers to network firewalls." ;
-          skos:altLabel "Network Firewall" ;
-          rdfs:label "Firewall" .
+          rdfs:label "Firewall" ;
+          skos:altLabel "Network Firewall" .
 
 
 :FirmwareBehaviorAnalysis rdfs:label "Firmware Behavior Analysis" ;
+                          :definition "Analyzing the behavior of embedded code in firmware and looking for anomalous behavior and suspicious activity." ;
                           :kb-article """## How it works
 Firmware behavior analysis provides protections by ensuring that installed firmware has not been tampered with or modified. Firmware analysis applies to mutable firmware and immutable read-only memory (ROMs).
 
@@ -50085,7 +50069,6 @@ A challenge-response is issued and includes a nonce so that replays are not allo
 * The firmware code will need to be modified to include the behavioral monitoring functionality.
 * This technique is sensitive to the device the embedded firmware is hosted on and it is expected that the devices and firmware will need to be profiled and analyzed to determine timing estimation.
 * This technique is not expected to be one hundred percent correct as you would expect in a hardware root of trust solution and may require some tuning.""" ;
-                          :definition "Analyzing the behavior of embedded code in firmware and looking for anomalous behavior and suspicious activity." ;
                           :synonym "Firmware Timing Analysis" .
 
 
@@ -50176,6 +50159,7 @@ Continuous maintenance of unauthorized domain lists is needed to keep up to date
 
 :ForwardResolutionIPDenylisting rdfs:label "Forward Resolution IP Denylisting" ;
                                 :definition "Blocking a DNS lookup's answer's IP address value." ;
+                                :synonym "Forward Resolution IP Blacklisting" ;
                                 :kb-article """## How it works
 
 This technique prevents a client from learning IP addresses deemed to be potentially malicious, which would have been delivered via forward resolution responses.
@@ -50192,8 +50176,7 @@ The DNS lookup can be blocked by either dropping the network traffic with an inl
   * Usage of new protocols to provide confidentiality for DNS traffic, such as DoH (DNS over HTTPS) and DoT (DNS over TLS), complicates collection of the IP address(es) in DNS responses. These protocols have often been enabled in browser settings transparently after a browser update, with DNS requests proxied over one of these cryptographic protocols through a specified host.
 * This technique must be implemented logically between the application that receives the response and the server which sent the response.
   * DNS responses sent in an encrypted manner, such as those using DoH or DoT, will require interception of the TLS connections in order to determine the IP address(es) in the response.
-* Replacing the response is not effective in the case that the nameserver uses a technique to provide integrity of its responses, such as DNSSEC for DNS responses.""" ;
-                                :synonym "Forward Resolution IP Blacklisting" .
+* Replacing the response is not effective in the case that the nameserver uses a technique to provide integrity of its responses, such as DNSSEC for DNS responses.""" .
 
 
 :FuzzyLogic :definition "Fuzzy logic is a form of many-valued logic in which the truth value of variables may be any real number between 0 and 1." ;
@@ -50213,9 +50196,9 @@ Generative pre-trained transformer. (n.d.). In Wikipedia. [Link](https://en.wiki
 
 
 :GatedRecurrentUnit rdfs:label "Gated Recurrent Unit" ;
+                    :definition "The GRU is like a long short-term memory (LSTM) with a forget gate, but has fewer parameters than LSTM, as it lacks an output gate. GRU's performance on certain tasks of polyphonic music modeling, speech signal modeling and natural language processing was found to be similar to that of LSTM" ;
                     :kb-article """## References
-Wikipedia. (2021, September 20). Gated Recurrent Unit. [Link](https://en.wikipedia.org/wiki/Gated_recurrent_unit)""" ;
-                    :definition "The GRU is like a long short-term memory (LSTM) with a forget gate, but has fewer parameters than LSTM, as it lacks an output gate. GRU's performance on certain tasks of polyphonic music modeling, speech signal modeling and natural language processing was found to be similar to that of LSTM" .
+Wikipedia. (2021, September 20). Gated Recurrent Unit. [Link](https://en.wikipedia.org/wiki/Gated_recurrent_unit)""" .
 
 
 :GenerativeAdversarialNetwork :kb-article """## References
@@ -50275,13 +50258,13 @@ TechVidvan. (n.d.). Clustering in Machine Learning Tutorial. [Link](https://tech
 
 
 :Harden rdfs:label "Harden" ;
-        :display-priority 0 ;
         :display-order 0 ;
+        :display-priority 0 ;
         :definition "The harden tactic is used to increase the opportunity cost of computer network exploitation. Hardening differs from Detection in that it generally is conducted before a system is online and operational." .
 
 
-:HardeningEvent :definition "An event involving actions to strengthen defenses, such as applying patches or implementing secure configurations, reducing attack surfaces, and increasing the difficulty of exploitation by adversaries." ;
-                rdfs:label "Hardening Event" .
+:HardeningEvent rdfs:label "Hardening Event" ;
+                :definition "An event involving actions to strengthen defenses, such as applying patches or implementing secure configurations, reducing attack surfaces, and increasing the difficulty of exploitation by adversaries." .
 
 
 :Hardware-basedProcessIsolation :kb-article """## How it works
@@ -50301,16 +50284,17 @@ Hardware process isolation is commonly implemented through Direct Memory Access 
 ## Implementations:
  * Intel Virtualization Technology for Directed I/O (Intel VT-d)
  * Firecracker""" ;
-                                :synonym "Virtualization" ;
                                 rdfs:label "Hardware-based Process Isolation" ;
+                                :synonym "Virtualization" ;
                                 :definition "Preventing one process from writing to the memory space of another process through hardware based address manager implementations." .
 
 
-:Hardware-basedWriteProtection :definition "Physical methods of preventing data from being written to computer storage." ;
-                               rdfs:label "Hardware-based Write Protection" .
+:Hardware-basedWriteProtection rdfs:label "Hardware-based Write Protection" ;
+                               :definition "Physical methods of preventing data from being written to computer storage." .
 
 
-:HardwareComponentInventory :synonym "Hardware Component Discovery" ;
+:HardwareComponentInventory :synonym "Hardware Component Discovery" ,
+                                     "Hardware Component Inventorying" ;
                             :kb-article """## How it works
 Administrators collect information on hardware devices such as peripherals, NICs, processors, and memory devices that are components of the computers in their architecture using a variety of administrative and management tools that query for this information.  In some cases, where such queries are not supported or provide specific information of interest, an administrator may also collect this information through remote adminstration tools and system commands, either manually or using scripts.
 
@@ -50326,7 +50310,6 @@ Administrators collect information on hardware devices such as peripherals, NICs
    * Web-based Enterprise Management (WBEM) collects CIM information
       * Windows Management Instrumentation (WMI)
       * Windows Management Infrastructure (MI)""" ;
-                            :synonym "Hardware Component Inventorying" ;
                             rdfs:label "Hardware Component Inventory" ;
                             :definition "Hardware component inventorying identifies and records the hardware items in the organization's architecture." .
 
@@ -50475,7 +50458,8 @@ ID3 is the basis of C4.5, and is best used in natural language processing.
 Decision Trees for Classification: ID3 Algorithm Explained. Towards Data Science. [Link](https://towardsdatascience.com/decision-trees-for-classification-id3-algorithm-explained-89df76e72df1).""" .
 
 
-:IOPortRestriction :kb-article """## How It works
+:IOPortRestriction rdfs:label "IO Port Restriction" ;
+                   :kb-article """## How It works
 
 Software-based restriction uses agent software installed on a computer system. The agent software monitors all IO port system traffic. The agent software is configurable to limit the use of certain devices connected to IO ports. The restriction software can also be configured to limit the access to files and applications on external storage devices connected to IO ports.
 
@@ -50491,7 +50475,6 @@ Types of restrictions that may be applied:
 ## Considerations
  * Agent software will need to be installed on host systems
  * Configurations for allow/deny for devices and files will need to be maintained""" ;
-                   rdfs:label "IO Port Restriction" ;
                    :definition "Limiting access to computer input/output (IO) ports to restrict unauthorized devices." .
 
 
@@ -50567,16 +50550,17 @@ Zhang, Q., Wang, H., Lu, H., Won, D., & Yoon, S. W. (2018). Medical Image Synthe
 :ImpersonateUser rdfs:label "Impersonate User" .
 
 
-:InboundSessionVolumeAnalysis rdfs:label "Inbound Session Volume Analysis" ;
-                              :kb-article """## How it works
+:InboundSessionVolumeAnalysis :kb-article """## How it works
 Network appliances are configured to alert on certain packets that typically are involved in DoS attacks. Typical packets include ICMP packets and SYN requests that are commonly used to flood networks. A sampling period is used to define a time window in which collected counts of the identified packets can be measured. If the collected number of packets exceeds a predefined limit then an alert is generated.
 
 ## Considerations
 Scalability as volume of attacks increase; single servers may not have the memory and storage resources to handle high volumes of network traffic.""" ;
+                              rdfs:label "Inbound Session Volume Analysis" ;
                               :definition "Analyzing inbound network session or connection attempt volume." .
 
 
-:InboundTrafficFiltering :kb-article """## How it works
+:InboundTrafficFiltering rdfs:label "Inbound Traffic Filtering" ;
+                         :kb-article """## How it works
 Inbound Traffic, in this context, is network traffic originating from an untrusted network towards a private host or enclave.
 For example:
 
@@ -50599,7 +50583,6 @@ Filtering policies are developed by administrators to meet business requirements
 * Netfilter (Linux)
 * Windows Firewall
 * pf(BSD)""" ;
-                         rdfs:label "Inbound Traffic Filtering" ;
                          :definition "Restricting network traffic originating from untrusted networks destined towards a private host or enclave." .
 
 
@@ -50907,8 +50890,8 @@ Towards Data Science. (n.d.). Understanding K-means Clustering in Machine Learni
                    :definition "K-means algorithm identifies k number of centroids, and then allocates every data point to the nearest cluster, while keeping the centroids as small as possible." .
 
 
-:KendallsRankCorrelationCoefficient rdfs:isDefinedBy <https://reference.wolfram.com/language/ref/KendallTau.html> ;
-                                    rdfs:label "Kendall's Rank Correlation Coefficient" ;
+:KendallsRankCorrelationCoefficient rdfs:label "Kendall's Rank Correlation Coefficient" ;
+                                    rdfs:isDefinedBy <https://reference.wolfram.com/language/ref/KendallTau.html> ;
                                     :definition "Kendall's $\\\\tau$ between and is given by $(n_c - n_d) / \\\\sqrt((n_c+n_d+n_x)(n_c+n_d+n_y)$, where is the number of concordant pairs of observations, is the number of discordant pairs, is the number of ties involving only the variable, and is the number of ties involving only the variable.\" ;" ;
                                     :synonym "Kendall's Tau Coefficient" ;
                                     :kb-article """## References
@@ -50922,9 +50905,9 @@ Towards Data Science. (n.d.). Understanding K-means Clustering in Machine Learni
                               rdfs:label "Kernel-based Process Isolation" .
 
 
-:Kurtosis :kb-article """## References
+:Kurtosis :definition "The measure of the \"fatness\" of the tails of a pmf or pdf. The fourth standardized moment of the distribution." ;
+          :kb-article """## References
 Wikipedia. (n.d.). Probability distribution. [Link](https://en.wikipedia.org/wiki/Probability_distribution)""" ;
-          :definition "The measure of the \"fatness\" of the tails of a pmf or pdf. The fourth standardized moment of the distribution." ;
           rdfs:label "Kurtosis" .
 
 
@@ -50937,8 +50920,8 @@ Wikipedia. (n.d.). Probability distribution. [Link](https://en.wikipedia.org/wik
 LAN Access Mediation is a network security approach that manages and controls access to a Local Area Network by using key components such as Access Control Lists (ACLs) to specify which devices are allowed or denied access, Port Security to restrict device connections to specific switch ports, RADIUS for determining the level of access or specific resources available to users or devices, and 802.1X for enforcing device authentication before granting network access. This comprehensive strategy ensures that only authorized devices and users can connect to the network, enhancing overall security.""" .
 
 
-:LevenshteinMatching rdfs:label "Levenschtein Matching" ;
-                     :synonym "Edit Distance" ;
+:LevenshteinMatching :synonym "Edit Distance" ;
+                     rdfs:label "Levenschtein Matching" ;
                      :kb-article """## References
 1. Navarro, G. (2001). A guided tour to approximate string matching. _ACM Computing Surveys_, 33(1), 31-88. [Link](https://doi.org/10.1145/375360.375365)""" ;
                      :definition "The Levenshtein distance (LD) is a metric for measuring the differences between two sequences - or strings. Informally, the LD is the number of individual edits one would have to make to turn one sequence into another." .
@@ -50957,8 +50940,8 @@ A Look at the Maths Behind Linear Classification. Towards Data Science. [Link](h
 2. Linear logic programming. (2023, May 16). In _Wikipedia_. [Link](https://en.wikipedia.org/wiki/Logic_programming#Linear_logic_programming)""" .
 
 
-:LinearRegression rdfs:label "Linear Regression" ;
-                  :definition "Statistical regression method used for predictive analysis by modeling the linear relationship between independent and dependent variables." ;
+:LinearRegression :definition "Statistical regression method used for predictive analysis by modeling the linear relationship between independent and dependent variables." ;
+                  rdfs:label "Linear Regression" ;
                   :kb-article """## How it works
 Takes independent variables (i.e. covariate, features, predictors, input variables) and dependent variables (i.e. response, output, “thing to be estimated”) and produces the coefficient(s) and intercept for a linear equation (e.g. (β1, β0) for y = β1x + β0) which predicts the relationship between the independent and independent variables by minimizing a cost function, Mean Squared Error, either directly in the case of univariate linear regression or by gradient descent* in the case of multivariate linear regression.
 
@@ -51100,9 +51083,9 @@ Support Vector Machines for Machine Learning. [Link](https://machinelearningmast
 Wikipedia. (n.d.). Central tendency. [Link](https://en.wikipedia.org/wiki/Central_tendency)""" .
 
 
-:MeanAbsoluteDeviation rdfs:label "Mean Absolute Deviation" ;
-                       :kb-article """## References
+:MeanAbsoluteDeviation :kb-article """## References
 Wikipedia. (n.d.). Average absolute deviation. [Link](https://en.wikipedia.org/wiki/Average_absolute_deviation)""" ;
+                       rdfs:label "Mean Absolute Deviation" ;
                        :synonym "MAD" ;
                        :definition "The mean absolute deviation (MAD), also referred to as the \"mean deviation\" or sometimes \"average absolute deviation\", is the mean of the data's absolute deviations around the data's mean: the average (absolute) distance from the mean." .
 
@@ -51114,9 +51097,9 @@ Wikipedia. (n.d.). Central tendency. [Link](https://en.wikipedia.org/wiki/Centra
 
 
 :MedianAbsoluteDeviation :definition "The median absolute deviation (also MAD) is the median of the absolute deviation from the median." ;
+                         rdfs:label "Median Absolute Deviation" ;
                          :kb-article """## References
-Wikipedia. (n.d.). Average absolute deviation. [Link](https://en.wikipedia.org/wiki/Average_absolute_deviation)""" ;
-                         rdfs:label "Median Absolute Deviation" .
+Wikipedia. (n.d.). Average absolute deviation. [Link](https://en.wikipedia.org/wiki/Average_absolute_deviation)""" .
 
 
 :MemoryBlockStartValidation :kb-article """## How it Works
@@ -51198,8 +51181,8 @@ Wikipedia. (n.d.). Central tendency. [Link](https://en.wikipedia.org/wiki/Centra
 
 :Model :display-priority 1 ;
        :definition "The model tactic is used to apply security engineering, vulnerability, threat, and risk analyses to digital systems. This is accomplished by creating and maintaining a common understanding of the systems being defended, the operations on those systems, actors using the systems, and the relationships and interactions between these elements." ;
-       :display-order -1 ;
-       rdfs:label "Model" .
+       rdfs:label "Model" ;
+       :display-order -1 .
 
 
 :Model-basedPolicyOptimization :definition "Model-based policy optimization (MBPO) is a model-based, online, off-policy reinforcement learning algorithm. For more information on the different types of reinforcement learning agents" ;
@@ -51251,8 +51234,8 @@ MFA configuration steps may vary across accounts and in some cases left up to us
                             rdfs:label "Multi-factor Authentication" .
 
 
-:MultilayerPerceptronClassification rdfs:label "Multilayer Perceptron Classification" ;
-                                    :definition "A multilayer perceptron (MLP) is a fully connected class of feedforward artificial neural network (ANN).An MLP consists of at least three layers of nodes: an input layer, a hidden layer and an output layer." ;
+:MultilayerPerceptronClassification :definition "A multilayer perceptron (MLP) is a fully connected class of feedforward artificial neural network (ANN).An MLP consists of at least three layers of nodes: an input layer, a hidden layer and an output layer." ;
+                                    rdfs:label "Multilayer Perceptron Classification" ;
                                     :kb-article """## References
 Multilayer perceptron. Wikipedia. [Link](https://en.wikipedia.org/wiki/Multilayer_perceptron).""" .
 
@@ -51278,9 +51261,9 @@ Wikipedia. (n.d.). Multivariate statistics. [Link](https://en.wikipedia.org/wiki
                       :definition "Multivariate statistics encompassed the simultaneous observation and analysis of more than one outcome variable, i.e., multivariate random variables." .
 
 
-:NaiveBayesClassifier :kb-article """## References
+:NaiveBayesClassifier :definition "The Naïve Bayes classifier is a supervised machine learning algorithm, which is used for classification tasks, like text classification. It is also part of a family of generative learning algorithms, meaning that it seeks to model the distribution of inputs of a given class or category." ;
+                      :kb-article """## References
 Naive Bayes. IBM. [Link](https://www.ibm.com/topics/naive-bayes?mhsrc=ibmsearch_a&mhq=naive%20bayes).""" ;
-                      :definition "The Naïve Bayes classifier is a supervised machine learning algorithm, which is used for classification tasks, like text classification. It is also part of a family of generative learning algorithms, meaning that it seeks to model the distribution of inputs of a given class or category." ;
                       rdfs:label "Naive Bayes Classifier" .
 
 
@@ -51353,8 +51336,8 @@ Network Resource Access Control involves managing and regulating access to resou
 :NetworkTrafficAnalysisSoftware rdfs:seeAlso <https://dbpedia.org/resource/Category:Network_analyzers> ;
                                 skos:altLabel "Network Sniffer" ;
                                 rdfs:isDefinedBy <https://dbpedia.org/page/Packet_analyzer> ;
-                                rdfs:label "Network Traffic Analysis Software" ;
-                                :definition "A packet analyzer, also known as packet sniffer, protocol analyzer, or network analyzer, is a computer program or computer hardware such as a packet capture appliance, that can intercept and log traffic that passes over a computer network or part of a network." .
+                                :definition "A packet analyzer, also known as packet sniffer, protocol analyzer, or network analyzer, is a computer program or computer hardware such as a packet capture appliance, that can intercept and log traffic that passes over a computer network or part of a network." ;
+                                rdfs:label "Network Traffic Analysis Software" .
 
 
 :NetworkTrafficCommunityDeviation :definition "Establishing baseline communities of network hosts and identifying statistically divergent inter-community communication." ;
@@ -51437,8 +51420,8 @@ Wikipedia. (n.d.). Nonlinear regression. [Link](https://en.wikipedia.org/wiki/No
 
 :NonlinearRegressionLearning :kb-article """## References
 Wikipedia. (n.d.). Nonlinear regression. [Link](https://en.wikipedia.org/wiki/Nonlinear_regression)""" ;
-                             rdfs:label "Nonlinear Regression Learning" ;
                              rdfs:seeAlso :NonlinearRegression ;
+                             rdfs:label "Nonlinear Regression Learning" ;
                              :definition "A supervised learning method that builds a non-linear regression model using training data." .
 
 
@@ -51475,8 +51458,8 @@ The OWL languages are characterized by formal semantics. They are built upon the
                 :definition "Terminate or remove an object from a host machine. This is the broadest class for object eviction." .
 
 
-:One-timePassword rdfs:label "One-time Password" ;
-                  rdfs:seeAlso <http://dbpedia.org/resource/One-time_password> ;
+:One-timePassword rdfs:seeAlso <http://dbpedia.org/resource/One-time_password> ;
+                  rdfs:label "One-time Password" ;
                   :synonym "OTP" ;
                   :definition "A one-time password is valid for only one user authentication." ;
                   :kb-article """## How it works
@@ -51546,13 +51529,13 @@ Operating System Monitoring Techniques have varied implementations including bui
                            rdfs:label "Operational Risk Assessment" .
 
 
-:OrganizationMapping :definition "Organization mapping identifies and models the people, roles, and groups with an organization and the relations between them." ;
-                     rdfs:label "Organization Mapping" ;
+:OrganizationMapping rdfs:label "Organization Mapping" ;
+                     :definition "Organization mapping identifies and models the people, roles, and groups with an organization and the relations between them." ;
                      :display-order 4 .
 
 
-:OutboundTrafficFiltering rdfs:label "Outbound Traffic Filtering" ;
-                          :definition "Restricting network traffic originating from a private host or enclave destined towards untrusted networks." ;
+:OutboundTrafficFiltering :definition "Restricting network traffic originating from a private host or enclave destined towards untrusted networks." ;
+                          rdfs:label "Outbound Traffic Filtering" ;
                           :kb-article """## How it works
 
 Outbound traffic, in this context, is network traffic originating from a private host or enclave destined towards untrusted networks.
@@ -51583,9 +51566,9 @@ There are various strategies for developing filtering rulesets:
 
 :PackageURL rdfs:isDefinedBy <https://github.com/package-url/purl-spec/blob/main/PURL-SPECIFICATION.rst> ;
             rdfs:seeAlso <https://github.com/package-url/purl-spec> ;
+            skos:altLabel "purl" ;
             rdfs:label "Package URL" ;
-            :definition "A package URL, or purl, is a URL used to identify a software package in a mostly universal and uniform way across programming languages, package managers, packaging conventions, tools, APIs and databases." ;
-            skos:altLabel "purl" .
+            :definition "A package URL, or purl, is a URL used to identify a software package in a mostly universal and uniform way across programming languages, package managers, packaging conventions, tools, APIs and databases." .
 
 
 :Parameter-basedTransferLearning :definition "The idea behind parameter-based methods is that a well-trained model on the source domain has learned a well-defined structure, and if two tasks are related, this structure can be transferred to the target model." ;
@@ -51662,9 +51645,9 @@ Users may be requested to change their passwords on a regular schedule. Manageme
 Requiring users to change their passwords frequently can result in insecure password practices by the user. The latest update of NIST SP 800-63B, Digital Identity Guidelines, recommends requiring password reset only when a known compromise has occurred, or every 365 days, rather than every 60 or 90 days.""" .
 
 
-:PatternMatching :definition "Pattern matching is the act of checking a given sequence of tokens for the presence of the constituents of some pattern." ;
-                 :kb-article """## References
+:PatternMatching :kb-article """## References
 1. Pattern matching. (2023, May 20). In _Wikipedia_. [Link](https://en.wikipedia.org/wiki/Pattern_matching)""" ;
+                 :definition "Pattern matching is the act of checking a given sequence of tokens for the presence of the constituents of some pattern." ;
                  rdfs:label "Pattern Matching" .
 
 
@@ -51703,9 +51686,9 @@ Zheng, Y., & Song, Y. (2021). An Effective Perturbation-Based Semi-Supervised Le
 Engelen, S., & Hoos, H. (2020). A survey on semi-supervised learning. Machine Learning, 109(2), 299-337. [Link](https://link.springer.com/article/10.1007/s10994-019-05855-6).""" .
 
 
-:PhiCoefficient :kb-article """## References
+:PhiCoefficient :definition "The phi coefficient (or mean square contingency coefficient is a measure of association for two binary variables." ;
+                :kb-article """## References
 \\Wikipedia. (n.d.). Phi coefficient. [Link](https://en.wikipedia.org/wiki/Phi_coefficient)""" ;
-                :definition "The phi coefficient (or mean square contingency coefficient is a measure of association for two binary variables." ;
                 :synonym "MCC" ;
                 rdfs:label "Phi Coefficient" ;
                 :synonym "Matthews Correlation Coefficient (in machine learning)" .
@@ -52057,10 +52040,10 @@ Processes that are started in a subsystem might not be fully terminated if they 
                     rdfs:label "Process Termination" .
 
 
-:ProgressivelyGrowingGAN :kb-article """## References
+:ProgressivelyGrowingGAN rdfs:label "Progressively Growing GAN" ;
+                         :kb-article """## References
 
 Machine Learning Mastery. (n.d.). Introduction to Progressive Growing Generative Adversarial Networks. [Link](https://machinelearningmastery.com/introduction-to-progressive-growing-generative-adversarial-networks/)""" ;
-                         rdfs:label "Progressively Growing GAN" ;
                          :definition "Progressive Growing GAN (ProGAN) is an extension to the GAN training process that allows for the stable training of generator models that can output large high-quality images." ;
                          :synonym "ProGAN" .
 
@@ -52165,9 +52148,9 @@ Random forest. Wikipedia.  [Link](https://en.wikipedia.org/wiki/Random_forest)."
 
 
 :RandomSplits rdfs:label "Random Splits" ;
+              :definition "The dataset is repeatedly sampled with a random split of the data into train and test sets." ;
               :kb-article """## References
-How to Create a Random Split Cross-Validation and Bagging Ensemble for Deep Learning in Keras.\"*Machine Learning Mastery*.  [Link](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/).""" ;
-              :definition "The dataset is repeatedly sampled with a random split of the data into train and test sets." .
+How to Create a Random Split Cross-Validation and Bagging Ensemble for Deep Learning in Keras.\"*Machine Learning Mastery*.  [Link](https://machinelearningmastery.com/how-to-create-a-random-split-cross-validation-and-bagging-ensemble-for-deep-learning-in-keras/).""" .
 
 
 :Range rdfs:label "Range" ;
@@ -52205,9 +52188,9 @@ Nullifying references to memory blocks makes those blocks no longer accessible. 
 
 
 :RegexMatching rdfs:label "Regex Matching" ;
-               :synonym "Regexp" ;
                :definition "Regular expression matching is type of partial string matching using a regular expression, which is a sequence of characters that specifies a match pattern in text." ;
-               :synonym "Regex" ;
+               :synonym "Regexp" ,
+                        "Regex" ;
                :kb-article """## How it works
 
 A regular expression (shortened as regex or regexp) is a sequence of characters that specifies a match pattern in text. Usually such patterns are used by string-searching algorithms for \"find\" or \"find and replace\" operations on strings, or for input validation.
@@ -52306,8 +52289,8 @@ Torgo, L. (2014). A resampling ensemble algorithm for improved accuracy. *Neuroc
                     rdfs:label "Resampling Ensemble" .
 
 
-:ResidualNeuralNetwork rdfs:label "Residual Neural Network" ;
-                       :definition "A residual neural network (ResNet) is an artificial neural network (ANN). It is a gateless or open-gated variant of the HighwayNet, the first working very deep feedforward neural network with hundreds of layers, much deeper than previous neural networks." ;
+:ResidualNeuralNetwork :definition "A residual neural network (ResNet) is an artificial neural network (ANN). It is a gateless or open-gated variant of the HighwayNet, the first working very deep feedforward neural network with hundreds of layers, much deeper than previous neural networks." ;
+                       rdfs:label "Residual Neural Network" ;
                        :kb-article """## References
 Wikipedia contributors. (2021, August 23). Residual neural network. In Wikipedia, The Free Encyclopedia. [Link](https://en.wikipedia.org/wiki/Residual_neural_network)""" .
 
@@ -52456,9 +52439,9 @@ If an attacker wants to inject some data into the program, for example as a para
                                    :synonym "ASLR" .
 
 
-:Self-organizingMap :kb-article """## References
+:Self-organizingMap :definition "A Self-Organizing Map (SOM) is a unsupervised learning model in Artificial Neural Network where the feature maps are the generated two-dimensional discretized form of an input space during the model training (based on competitive learning)" ;
+                    :kb-article """## References
 GeeksforGeeks. (n.d.). ANN - Self Organizing Neural Network (SONN). [Link](https://www.geeksforgeeks.org/ann-self-organizing-neural-network-sonn/)""" ;
-                    :definition "A Self-Organizing Map (SOM) is a unsupervised learning model in Artificial Neural Network where the feature maps are the generated two-dimensional discretized form of an input space during the model training (based on competitive learning)" ;
                     :todo "May be called SONN based on citation" ;
                     rdfs:label "Self-organizing Map" .
 
@@ -52522,9 +52505,9 @@ Jashish Shrestha. (n.d.). Beginner's Guide to Semi-Supervised Learning. [Link](h
 
 
 :Semi-supervisedSelf-training :definition "Self-training is the procedure in which a supervised method for classification or regression is modified it to work in a semi-supervised manner, taking advantage of labeled and unlabeled data" ;
-                              rdfs:label "Semi-supervised Self-training" ;
                               :kb-article """## References
-AltexSoft. (n.d.). Semi-Supervised Learning: A Technical Guide with Python Examples. [Link](https://www.altexsoft.com/blog/semi-supervised-learning/#:~:text=One%20of%20the%20simplest%20examples,of%20labeled%20and%20unlabeled%20data.)""" .
+AltexSoft. (n.d.). Semi-Supervised Learning: A Technical Guide with Python Examples. [Link](https://www.altexsoft.com/blog/semi-supervised-learning/#:~:text=One%20of%20the%20simplest%20examples,of%20labeled%20and%20unlabeled%20data.)""" ;
+                              rdfs:label "Semi-supervised Self-training" .
 
 
 :Semi-supervisedTransductiveLearning :definition """The goal of transductive learning is to infer the correct labels for the given unlabeled data
@@ -52536,13 +52519,14 @@ Semi-Supervised Learning. Wikipedia.  [Link](https://en.wikipedia.org/wiki/Semi-
 Zhou, D., & Li, M. (2005). Semi-supervised learning by higher order regularization. In Proceedings of the 43rd Annual Meeting of the Association for Computational Linguistics (ACL) (pp. 1-9). [Link](https://www.cs.sfu.ca/~anoop/papers/pdf/semisup_naacl.pdf).""" .
 
 
-:Semi-supervisedWrapperMethod :definition "The principle behind wrapper methods is that we train a model with labeled data and then generate pseudo-labels for the unlabeled data using the trained model iteratively." ;
-                              rdfs:label "Semi-supervised Wrapper Method" ;
+:Semi-supervisedWrapperMethod rdfs:label "Semi-supervised Wrapper Method" ;
+                              :definition "The principle behind wrapper methods is that we train a model with labeled data and then generate pseudo-labels for the unlabeled data using the trained model iteratively." ;
                               :kb-article """## References
 Jashish, M. (n.d.). Beginner's Guide to Semi-Supervised Learning. Jashish Blog.  [Link](http://jashish.com.np/blog/posts/beginners-guide-to-semi-supervised-learning/).""" .
 
 
 :SenderMTAReputationAnalysis :definition "Characterizing the reputation of mail transfer agents (MTA) to determine the security risk in emails." ;
+                             rdfs:label "Sender MTA Reputation Analysis" ;
                              :kb-article """## How it works
 The sender message transfer agent (MTA) trust rating can be considered an indicator of the level of security risk and/or a trust level associated with sender MTAs in an email header.
 
@@ -52557,8 +52541,7 @@ The features considered in determining the trust rating may include:
 For example, higher values for the length of time an MTA has interacted with the enterprise, or number of emails received from an MTA can result in a higher trust rating. The trust rating categorizes the sender MTA as unrated, neutral, trusted, suspicious, or malicious.
 
 ## Considerations
-Legitimate emails from a sender MTA may receive a lower trust rating over time if the sender's domain gets spoofed and is used to send unauthorized emails.""" ;
-                             rdfs:label "Sender MTA Reputation Analysis" .
+Legitimate emails from a sender MTA may receive a lower trust rating over time if the sender's domain gets spoofed and is used to send unauthorized emails.""" .
 
 
 :SenderReputationAnalysis :definition "Ascertaining sender reputation based on information associated with a message (e.g. email/instant messaging)." ;
@@ -52618,13 +52601,13 @@ The organization collects and models architectural information about the service
 * Service dependencies in cloud or microservice architectures may be discovered using distributed tracing capabilities""" .
 
 
-:SessionDurationAnalysis :kb-article """## How it works
+:SessionDurationAnalysis rdfs:label "Session Duration Analysis" ;
+                         :kb-article """## How it works
 Detecting unauthorized user sessions by comparing the duration of a user logon session with a baseline behavior model. The behavior model comprises historical user session duration times.  Abnormalities between session duration and the behavior model may indicate suspicious activity.
 
 ## Considerations
 * Potential for false positives from anomalies that are not associated with malicious activity.
 * Attackers may not differentiate their session duration enough to trigger an alert.""" ;
-                         rdfs:label "Session Duration Analysis" ;
                          :definition "Analyzing the duration of user sessions in order to detect unauthorized  activity." .
 
 
@@ -52642,9 +52625,9 @@ If the threshold for detecting a stack anomaly is low, it may not detect a retur
                         :definition "Comparing a call stack in system memory with a shadow call stack maintained by the processor to determine unauthorized shellcode activity." .
 
 
-:SingularValueDecomposition :kb-article """## References
+:SingularValueDecomposition :definition "Singular Value Decomposition (SVD) is an algorithm that represents a matrix as a linear series of data and to find the set of factors that will best predict an outcome" ;
+                            :kb-article """## References
 Wikipedia. (n.d.). Singular value decomposition. [Link](https://en.wikipedia.org/wiki/Singular_value_decomposition)""" ;
-                            :definition "Singular Value Decomposition (SVD) is an algorithm that represents a matrix as a linear series of data and to find the set of factors that will best predict an outcome" ;
                             rdfs:label "Singular Value Decomposition" .
 
 
@@ -53002,10 +52985,10 @@ When system firmware verification fails a set of predefined responses is typical
            rdfs:label "Token Impersonation/Theft" .
 
 
-:TA0001 rdfs:label "Initial Access" ;
-        :definition """The adversary is trying to get into your network.
+:TA0001 :definition """The adversary is trying to get into your network.
 
 Initial Access consists of techniques that use various entry vectors to gain their initial foothold within a network. Techniques used to gain a foothold include targeted spearphishing and exploiting weaknesses on public-facing web servers. Footholds gained through initial access may allow for continued access, like valid accounts and use of external remote services, or may be limited-use due to changing passwords.""" ;
+        rdfs:label "Initial Access" ;
         :display-order 1 .
 
 
@@ -53017,10 +53000,10 @@ Execution consists of techniques that result in adversary-controlled code runnin
 
 
 :TA0003 :display-order 3 ;
+        rdfs:label "Persistence" ;
         :definition """The adversary is trying to maintain their foothold.
 
-Persistence consists of techniques that adversaries use to keep access to systems across restarts, changed credentials, and other interruptions that could cut off their access. Techniques used for persistence include any access, action, or configuration changes that let them maintain their foothold on systems, such as replacing or hijacking legitimate code or adding startup code.""" ;
-        rdfs:label "Persistence" .
+Persistence consists of techniques that adversaries use to keep access to systems across restarts, changed credentials, and other interruptions that could cut off their access. Techniques used for persistence include any access, action, or configuration changes that let them maintain their foothold on systems, such as replacing or hijacking legitimate code or adding startup code.""" .
 
 
 :TA0004 rdfs:label "Privilege Escalation" ;
@@ -53044,10 +53027,10 @@ These techniques often overlap with Persistence techniques, as OS features that 
 Defense Evasion consists of techniques that adversaries use to avoid detection throughout their compromise. Techniques used for defense evasion include uninstalling/disabling security software or obfuscating/encrypting data and scripts. Adversaries also leverage and abuse trusted processes to hide and masquerade their malware. Other tactics' techniques are cross-listed here when those techniques include the added benefit of subverting defenses.""" .
 
 
-:TA0006 :display-order 6 ;
-        :definition """The adversary is trying to steal account names and passwords.
+:TA0006 :definition """The adversary is trying to steal account names and passwords.
 
 Credential Access consists of techniques for stealing credentials like account names and passwords. Techniques used to get credentials include keylogging or credential dumping. Using legitimate credentials can give adversaries access to systems, make them harder to detect, and provide the opportunity to create more accounts to help achieve their goals.""" ;
+        :display-order 6 ;
         rdfs:label "Credential Access" .
 
 
@@ -53086,11 +53069,11 @@ Command and Control consists of techniques that adversaries may use to communica
         :display-order 10 .
 
 
-:TA0040 :definition """The adversary is trying to manipulate, interrupt, or destroy your systems and data.
+:TA0040 rdfs:label "Impact" ;
+        :definition """The adversary is trying to manipulate, interrupt, or destroy your systems and data.
 
 Impact consists of techniques that adversaries use to disrupt availability or compromise integrity by manipulating business and operational processes. Techniques used for impact can include destroying or tampering with data. In some cases, business processes can look fine, but may have been altered to benefit the adversaries' goals. These techniques might be used by adversaries to follow through on their end goal or to provide cover for a confidentiality breach.""" ;
-        :display-order 12 ;
-        rdfs:label "Impact" .
+        :display-order 12 .
 
 
 :TPMBootIntegrity :synonym "STRM" ;
@@ -53118,8 +53101,8 @@ Attestation of the secure boot occurs when a verifying entity requests a Quote w
 
 
 :TelecommandAnalysis rdfs:label "Telecommand Analysis" ;
-                     :definition "The systematic examination using static inspection, dynamic simulation, protocol decoding, and anomaly-detection techniques of telecommand traffic or individual command objects to assess correctness, safety, compliance, and potential malicious intent before those commands are propagated or executed." ;
-                     :kb-article "## How it works" .
+                     :kb-article "## How it works" ;
+                     :definition "The systematic examination using static inspection, dynamic simulation, protocol decoding, and anomaly-detection techniques of telecommand traffic or individual command objects to assess correctness, safety, compliance, and potential malicious intent before those commands are propagated or executed." .
 
 
 :TelecommandAuthentication :definition "The application of cryptographic or protocol-level techniques that enable any remotely controlled device, or its control system, to verify, with cryptographic assurance, the origin, integrity, and freshness of every received telecommand before execution, thereby preventing spoofing, injection, replay, or unauthorized modification." ;
@@ -53147,9 +53130,9 @@ Temporal difference learning. Wikipedia.  [Link](https://en.wikipedia.org/wiki/T
 
 :TimeSeriesAnalysis rdfs:label "Time Series Analysis" ;
                     :todo "Lots of time series leaves couls be put here." ;
+                    :definition "Time series analysis comprises methods for analyzing time series data in order to extract meaningful statistics and other characteristics of the data." ;
                     :kb-article """## References
-Wikipedia. (n.d.). Time series. [Link](https://en.wikipedia.org/wiki/Time_series)""" ;
-                    :definition "Time series analysis comprises methods for analyzing time series data in order to extract meaningful statistics and other characteristics of the data." .
+Wikipedia. (n.d.). Time series. [Link](https://en.wikipedia.org/wiki/Time_series)""" .
 
 
 :Token-basedAuthentication :definition "Token-based authentication is an authentication protocol where users verify their identity in exchange for a unique access token. Users can then access the website, application, or resource for the life of the token without having to re-enter their credentials." ;
@@ -53209,8 +53192,8 @@ Transfer learning. Wikipedia.  [Link](https://en.wikipedia.org/wiki/Transfer_lea
 
 :Transformer-XL :kb-article """## References
 Transformer-XL. (n.d.). Papers with Code. [Link](https://paperswithcode.com/method/transformer-xl)""" ;
-                :definition "Transformer-XL is a transformer architecture that introduces the notion of recurrence to the deep self-attention network. Instead of computing the hidden states from scratch for each new segment, Transformer-XL reuses the hidden states obtained in previous segments." ;
-                rdfs:label "Transformer-XL" .
+                rdfs:label "Transformer-XL" ;
+                :definition "Transformer-XL is a transformer architecture that introduces the notion of recurrence to the deep self-attention network. Instead of computing the hidden states from scratch for each new segment, Transformer-XL reuses the hidden states obtained in previous segments." .
 
 
 :Transformer-basedLearning :kb-article """## References
@@ -53368,8 +53351,8 @@ Geolocation data for each user logon attempt is collected and used to create a b
 Wikipedia. (n.d.). Statistical dispersion. [Link](https://en.wikipedia.org/wiki/Statistical_dispersion)""" .
 
 
-:VariableInitialization rdfs:label "Variable Initialization" ;
-                        :definition "Setting variables to a known value before use." ;
+:VariableInitialization :definition "Setting variables to a known value before use." ;
+                        rdfs:label "Variable Initialization" ;
                         :kb-article """## How it Works
 Initializing variables upon declaration ensures that the variable has a known quantity before use.
 
@@ -53404,8 +53387,8 @@ Intro to Active Learning. inovex Blog.  [Link](https://www.inovex.de/de/blog/int
 
 :VolumeSnapshot rdfs:isDefinedBy <https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html> ;
                 :definition "A volume snapshot is a point-in-time copy of a storage volume." ;
-                rdfs:label "Volume Snapshot" ;
-                rdfs:seeAlso <https://en.wikipedia.org/wiki/Shadow_Copy> .
+                rdfs:seeAlso <https://en.wikipedia.org/wiki/Shadow_Copy> ;
+                rdfs:label "Volume Snapshot" .
 
 
 :Voting rdfs:label "Voting" ;
@@ -53419,8 +53402,8 @@ Ensemble learning. Wikipedia.  [Link](https://en.wikipedia.org/wiki/Ensemble_lea
 An ID token is proof of the user's authentication. An ID token is encoded as a JSON Web Token (JWT), a standard format that allows your application to easily inspect its content, and make sure it comes from the expected issuer and that no one else changed it.""" ;
                   :definition "An ID token is an artifact that proves that the user has been authenticated." ;
                   rdfs:label "Web Identity Token" ;
-                  rdfs:isDefinedBy <https://auth0.com/blog/id-token-access-token-what-is-the-difference/> ;
-                  :synonym "Identity Token" .
+                  :synonym "Identity Token" ;
+                  rdfs:isDefinedBy <https://auth0.com/blog/id-token-access-token-what-is-the-difference/> .
 
 
 :WebSessionAccessMediation :kb-article """## How it works
